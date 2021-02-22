@@ -14,6 +14,9 @@
 		3F31AE8125E2219600B2A6C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F31AE8025E2219600B2A6C1 /* Assets.xcassets */; };
 		3F31AE8425E2219600B2A6C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F31AE8225E2219600B2A6C1 /* LaunchScreen.storyboard */; };
 		3F31AEA025E2243800B2A6C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F31AE9F25E2243800B2A6C1 /* GoogleService-Info.plist */; };
+		3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */; };
+		3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */; };
+		3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */; };
 		7D8110E6091F440435CDC098 /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,9 @@
 		3F31AE8325E2219600B2A6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F31AE8525E2219600B2A6C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F31AE9F25E2243800B2A6C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup ViewController.swift"; sourceTree = "<group>"; };
+		3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login ViewController.swift"; sourceTree = "<group>"; };
+		3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home ViewController.swift"; sourceTree = "<group>"; };
 		777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Free_Period_Directory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810B4D51D384A700097AAC58 /* Pods-Free Period Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.debug.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,9 +71,9 @@
 		3F31AE7625E2219200B2A6C1 /* Free Period Directory */ = {
 			isa = PBXGroup;
 			children = (
+				3F31AEAB25E2D99D00B2A6C1 /* View Controllers */,
 				3F31AE7725E2219200B2A6C1 /* AppDelegate.swift */,
 				3F31AE7925E2219200B2A6C1 /* SceneDelegate.swift */,
-				3F31AE7B25E2219200B2A6C1 /* ViewController.swift */,
 				3F31AE7D25E2219200B2A6C1 /* Main.storyboard */,
 				3F31AE8025E2219600B2A6C1 /* Assets.xcassets */,
 				3F31AE8225E2219600B2A6C1 /* LaunchScreen.storyboard */,
@@ -75,6 +81,17 @@
 				3F31AE9F25E2243800B2A6C1 /* GoogleService-Info.plist */,
 			);
 			path = "Free Period Directory";
+			sourceTree = "<group>";
+		};
+		3F31AEAB25E2D99D00B2A6C1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F31AE7B25E2219200B2A6C1 /* ViewController.swift */,
+				3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */,
+				3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */,
+				3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		44F01060A7F058BE0BF366DC /* Frameworks */ = {
@@ -209,9 +226,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */,
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
+				3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */,
+				3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
