@@ -58,7 +58,7 @@ class Signup_ViewController: UIViewController {
         if isPasswordValid(cleanedPassword) == false {
             
             // Password is not secure
-            return "Please make sure your password is at least 8 characters, contains a special character, and a number"
+            return "Your password must have least 8 characters and contain a number and special character"
         }
         
         return nil
@@ -97,7 +97,7 @@ class Signup_ViewController: UIViewController {
                 if error != nil {
                     
                     // There is an error in creating the user
-                    self.showError("Error creating user")
+                    self.showError("This email address has either been taken or is not valid")
                 } else {
                     
                     // User creation was successful. Store first and last name
@@ -108,7 +108,7 @@ class Signup_ViewController: UIViewController {
                         if error != nil {
                             // Error occured
                             // !!!!!!!!!! TODO !!!!!!!!!!
-                            self.showError("DATABASE STORING ERROR (probably don't show this to user, this is for testing purposes)")
+                            self.showError("DATABASE STORING ERROR")
                         }
                     }
                     
