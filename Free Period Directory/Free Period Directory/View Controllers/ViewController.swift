@@ -17,10 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        let ref = Database.database().reference()
-        
-        ref.child("someid/name").setValue("Mike")
     }
 
 
