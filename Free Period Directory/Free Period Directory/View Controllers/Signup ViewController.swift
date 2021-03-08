@@ -127,6 +127,10 @@ class Signup_ViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
+    func goToFreePeriodEntries() {
+        
+    }
+    
     func goToHomescreen() {
         
         let homeViewController =
