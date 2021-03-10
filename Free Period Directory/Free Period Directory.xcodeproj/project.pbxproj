@@ -17,7 +17,7 @@
 		3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */; };
 		3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */; };
 		3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */; };
-		3FDBBD4925F5E4190059F4F9 /* Free Period Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBBD4825F5E4190059F4F9 /* Free Period Signup ViewController.swift */; };
+		3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */; };
 		3FE2184425E636C7004C4E51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2184325E636C7004C4E51 /* Constants.swift */; };
 		7D8110E6091F440435CDC098 /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */; };
 /* End PBXBuildFile section */
@@ -36,7 +36,7 @@
 		3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup ViewController.swift"; sourceTree = "<group>"; };
 		3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login ViewController.swift"; sourceTree = "<group>"; };
 		3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home ViewController.swift"; sourceTree = "<group>"; };
-		3FDBBD4825F5E4190059F4F9 /* Free Period Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Free Period Signup ViewController.swift"; sourceTree = "<group>"; };
+		3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Free Period Signup ViewController.swift"; sourceTree = "<group>"; };
 		3FE2184325E636C7004C4E51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Free_Period_Directory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810B4D51D384A700097AAC58 /* Pods-Free Period Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.debug.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,13 +91,21 @@
 		3F31AEAB25E2D99D00B2A6C1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3FDBBD4B25F73C030059F4F9 /* Signup ViewControllers */,
 				3F31AE7B25E2219200B2A6C1 /* ViewController.swift */,
-				3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */,
 				3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */,
 				3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */,
-				3FDBBD4825F5E4190059F4F9 /* Free Period Signup ViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3FDBBD4B25F73C030059F4F9 /* Signup ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */,
+				3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */,
+			);
+			path = "Signup ViewControllers";
 			sourceTree = "<group>";
 		};
 		3FE2184225E636AC004C4E51 /* Helpers */ = {
@@ -244,8 +252,8 @@
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
-				3FDBBD4925F5E4190059F4F9 /* Free Period Signup ViewController.swift in Sources */,
 				3FE2184425E636C7004C4E51 /* Constants.swift in Sources */,
+				3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */,
 				3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */,
 				3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */,
 			);

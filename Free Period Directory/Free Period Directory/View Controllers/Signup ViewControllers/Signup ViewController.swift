@@ -113,7 +113,7 @@ class Signup_ViewController: UIViewController {
                     }
                     
                     // Go to home screen
-                    self.goToHomescreen()
+                    self.goToNextscreen()
                 }
             }
             
@@ -131,13 +131,17 @@ class Signup_ViewController: UIViewController {
         
     }
     
-    func goToHomescreen() {
+    func goToNextscreen() {
         
-        let homeViewController =
-            storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? Home_ViewController
+        let freePeriodSignupViewController =
+            storyboard?.instantiateViewController(identifier:
+            Constants.Storyboard.freePeriodSignupViewController) as?
+            Free_Period_Signup_ViewController
         
-        view.window?.rootViewController = homeViewController
+        view.window?.rootViewController = freePeriodSignupViewController
         view.window?.makeKeyAndVisible()
+        
+        
     }
         
 }
