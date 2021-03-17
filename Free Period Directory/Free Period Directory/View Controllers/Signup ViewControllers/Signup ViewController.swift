@@ -103,11 +103,10 @@ class Signup_ViewController: UIViewController {
                     // User creation was successful. Store first and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid":result!.user.uid]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData( ["firstname":firstName, "lastname":lastName, "uid":result!.user.uid, "free1":"", "free2":""]) { (error) in
                         
                         if error != nil {
                             // Error occured
-                            // !!!!!!!!!! TODO !!!!!!!!!!
                             self.showError("DATABASE STORING ERROR")
                         }
                     }
