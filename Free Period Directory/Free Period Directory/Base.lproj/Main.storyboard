@@ -234,9 +234,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-2v-kqp">
-                                <rect key="frame" x="0.0" y="438" width="414" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1z-zR-PdU" userLabel="welcome">
+                                <rect key="frame" x="20" y="438" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -244,15 +244,18 @@
                         <viewLayoutGuide key="safeArea" id="XFj-5S-Z9N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XFj-5S-Z9N" firstAttribute="trailing" secondItem="Dq1-2v-kqp" secondAttribute="trailing" id="Uoe-HU-ajd"/>
-                            <constraint firstItem="Dq1-2v-kqp" firstAttribute="top" secondItem="XFj-5S-Z9N" secondAttribute="top" constant="394" id="XdC-rK-LX2"/>
-                            <constraint firstItem="Dq1-2v-kqp" firstAttribute="leading" secondItem="XFj-5S-Z9N" secondAttribute="leading" id="bDp-Qd-Rib"/>
+                            <constraint firstItem="g1z-zR-PdU" firstAttribute="leading" secondItem="XFj-5S-Z9N" secondAttribute="leading" constant="20" id="EOo-4n-RgP"/>
+                            <constraint firstItem="g1z-zR-PdU" firstAttribute="centerX" secondItem="Z0S-OH-yWd" secondAttribute="centerX" id="L4v-d4-2d2"/>
+                            <constraint firstItem="g1z-zR-PdU" firstAttribute="centerY" secondItem="Z0S-OH-yWd" secondAttribute="centerY" id="khO-Q4-WHq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="welcome" destination="g1z-zR-PdU" id="1pG-73-McM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaW-Ev-i1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2512" y="459"/>
+            <point key="canvasLocation" x="2511.594202898551" y="458.70535714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4NU-8W-7eD">
