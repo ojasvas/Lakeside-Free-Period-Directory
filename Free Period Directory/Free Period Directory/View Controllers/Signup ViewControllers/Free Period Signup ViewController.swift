@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class Free_Period_Signup_ViewController: UIViewController {
     
@@ -31,7 +33,7 @@ class Free_Period_Signup_ViewController: UIViewController {
     
     @IBOutlet weak var secondFreeSwitch: UISwitch!
     
-    @IBOutlet weak var thridFreeSwitch: UISwitch!
+    @IBOutlet weak var thirdFreeSwitch: UISwitch!
     
     @IBOutlet weak var fourthFreeSwitch: UISwitch!
     
@@ -44,6 +46,7 @@ class Free_Period_Signup_ViewController: UIViewController {
     @IBOutlet weak var eighthFreeSwitch: UISwitch!
     
     @IBOutlet weak var submitButton: UIButton!
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +65,93 @@ class Free_Period_Signup_ViewController: UIViewController {
     }
     */
     
-    @IBAction func submitTapped(_ sender: Any) {
+    // check if at least one switch is on
+    func validateSwitches() -> Bool {
+        if firstFreeSwitch.isOn ||
+            secondFreeSwitch.isOn ||
+            thirdFreeSwitch.isOn ||
+            fourthFreeSwitch.isOn ||
+            fifthFreeSwitch.isOn ||
+            sixthFreeSwitch.isOn ||
+            seventhFreeSwitch.isOn ||
+            eighthFreeSwitch.isOn {
+            
+            return true
+        }
+        return false
     }
     
+    func whatFrees() -> [String] {
+        var frees: [String] = []
+        if firstFreeSwitch.isOn {
+            frees.append("first")
+        }
+        if secondFreeSwitch.isOn {
+            frees.append("second")
+        }
+        if thirdFreeSwitch.isOn {
+            frees.append("third")
+        }
+        if fourthFreeSwitch.isOn {
+            frees.append("fourth")
+        }
+        if fifthFreeSwitch.isOn {
+            frees.append("fifth")
+        }
+        if sixthFreeSwitch.isOn {
+            frees.append("sixth")
+        }
+        if seventhFreeSwitch.isOn {
+            frees.append("seventh")
+        }
+        if eighthFreeSwitch.isOn {
+            frees.append("eighth")
+        }
+        return frees
+    }
+
+    @IBAction func submitPressed(_ sender: Any) {
+        
+        // check validity
+        let isValid = validateSwitches()
+        if isValid == false {
+            // Send alert if the user does select any frees
+            // Source: developer.apple.com
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select your frees", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The error alert occured.")
+            }))
+            self.present(errorAlert, animated: true, completion: nil)
+        } else {
+           let frees = whatFrees()
+           let numFrees = frees.count
+           var i = 0
+            
+           // call the user uid to set the value of his/her/their frees
+           // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase
+           guard let user = Auth.auth().currentUser else { return }
+           let userUID = user.uid
+           let db = Firestore.firestore()
+           let ref = db.collection("users").document(userUID)
+            
+           while i < numFrees {
+               
+               let freeNumber = i + 1
+               let freeName = "free\(String(freeNumber))"
+               ref.updateData([
+                  freeName: frees[i]
+               ])
+               i = i + 1
+            }
+            self.goToHomescreen()
+        }
+   }
+    func goToHomescreen() {
+        
+        let homeViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? Home_ViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+    }
 }

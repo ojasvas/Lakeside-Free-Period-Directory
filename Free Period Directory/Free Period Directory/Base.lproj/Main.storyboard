@@ -234,9 +234,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-2v-kqp">
-                                <rect key="frame" x="0.0" y="438" width="414" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1z-zR-PdU" userLabel="welcome">
+                                <rect key="frame" x="20" y="438" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -244,15 +244,18 @@
                         <viewLayoutGuide key="safeArea" id="XFj-5S-Z9N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XFj-5S-Z9N" firstAttribute="trailing" secondItem="Dq1-2v-kqp" secondAttribute="trailing" id="Uoe-HU-ajd"/>
-                            <constraint firstItem="Dq1-2v-kqp" firstAttribute="top" secondItem="XFj-5S-Z9N" secondAttribute="top" constant="394" id="XdC-rK-LX2"/>
-                            <constraint firstItem="Dq1-2v-kqp" firstAttribute="leading" secondItem="XFj-5S-Z9N" secondAttribute="leading" id="bDp-Qd-Rib"/>
+                            <constraint firstItem="g1z-zR-PdU" firstAttribute="leading" secondItem="XFj-5S-Z9N" secondAttribute="leading" constant="20" id="EOo-4n-RgP"/>
+                            <constraint firstItem="g1z-zR-PdU" firstAttribute="centerX" secondItem="Z0S-OH-yWd" secondAttribute="centerX" id="L4v-d4-2d2"/>
+                            <constraint firstItem="g1z-zR-PdU" firstAttribute="centerY" secondItem="Z0S-OH-yWd" secondAttribute="centerY" id="khO-Q4-WHq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="welcome" destination="g1z-zR-PdU" id="1pG-73-McM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KaW-Ev-i1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3973.913043478261" y="85.714285714285708"/>
+            <point key="canvasLocation" x="2511.594202898551" y="458.70535714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4NU-8W-7eD">
@@ -280,10 +283,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIg-FZ-55v">
-                                <rect key="frame" x="189" y="817" width="49" height="30"/>
+                                <rect key="frame" x="183" y="815" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submitTapped:" destination="FBq-aC-h3o" eventType="touchUpInside" id="v0y-Bf-NrD"/>
+                                    <action selector="submitPressed:" destination="FBq-aC-h3o" eventType="touchUpInside" id="SZA-aZ-stu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Frees!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ud3-Qh-Iyc">
@@ -293,7 +296,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-Jq-lEp">
-                                <rect key="frame" x="26" y="164" width="374" height="600"/>
+                                <rect key="frame" x="20" y="166" width="374" height="600"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5yZ-1l-teo">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="600"/>
@@ -402,14 +405,14 @@
                         <viewLayoutGuide key="safeArea" id="iBS-s2-xKJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ph3-Jq-lEp" firstAttribute="top" secondItem="Ud3-Qh-Iyc" secondAttribute="bottom" constant="25" id="0XG-F8-es4"/>
-                            <constraint firstItem="xIg-FZ-55v" firstAttribute="leading" secondItem="iBS-s2-xKJ" secondAttribute="leading" constant="189" id="9xM-Ma-gJi"/>
+                            <constraint firstItem="ph3-Jq-lEp" firstAttribute="top" secondItem="Ud3-Qh-Iyc" secondAttribute="bottom" constant="27" id="0XG-F8-es4"/>
+                            <constraint firstItem="xIg-FZ-55v" firstAttribute="leading" secondItem="iBS-s2-xKJ" secondAttribute="leading" constant="183" id="9xM-Ma-gJi"/>
                             <constraint firstItem="Ud3-Qh-Iyc" firstAttribute="trailing" secondItem="yaJ-Tn-4sW" secondAttribute="trailingMargin" id="J5W-lg-ZeH"/>
                             <constraint firstItem="Ud3-Qh-Iyc" firstAttribute="leading" secondItem="yaJ-Tn-4sW" secondAttribute="leadingMargin" id="Ksk-CQ-Zbc"/>
-                            <constraint firstItem="xIg-FZ-55v" firstAttribute="centerX" secondItem="ph3-Jq-lEp" secondAttribute="centerX" id="Q4Q-XO-bho"/>
+                            <constraint firstItem="xIg-FZ-55v" firstAttribute="centerX" secondItem="ph3-Jq-lEp" secondAttribute="centerX" constant="0.5" id="Q4Q-XO-bho"/>
                             <constraint firstItem="Ud3-Qh-Iyc" firstAttribute="top" secondItem="iBS-s2-xKJ" secondAttribute="top" id="ecR-Ff-9wQ"/>
-                            <constraint firstItem="ph3-Jq-lEp" firstAttribute="bottom" secondItem="iBS-s2-xKJ" secondAttribute="bottom" constant="-98" id="fZN-OD-gd6"/>
-                            <constraint firstItem="xIg-FZ-55v" firstAttribute="bottom" secondItem="iBS-s2-xKJ" secondAttribute="bottom" constant="-15" id="ml4-0j-B3h"/>
+                            <constraint firstItem="ph3-Jq-lEp" firstAttribute="bottom" secondItem="iBS-s2-xKJ" secondAttribute="bottom" constant="-96" id="fZN-OD-gd6"/>
+                            <constraint firstItem="xIg-FZ-55v" firstAttribute="bottom" secondItem="iBS-s2-xKJ" secondAttribute="bottom" constant="-17" id="ml4-0j-B3h"/>
                         </constraints>
                     </view>
                     <connections>
@@ -427,9 +430,9 @@
                         <outlet property="seventhPeriod" destination="WAm-Jf-Dg7" id="PZ1-Kp-1zU"/>
                         <outlet property="sixthFreeSwitch" destination="4aq-Mx-82P" id="E7B-so-Qa0"/>
                         <outlet property="sixthPeriod" destination="hcK-o5-Zfx" id="oxf-Wm-hTg"/>
-                        <outlet property="submitButton" destination="xIg-FZ-55v" id="ORe-CP-fKr"/>
+                        <outlet property="submitButton" destination="xIg-FZ-55v" id="Odb-e9-8QU"/>
+                        <outlet property="thirdFreeSwitch" destination="S0w-jf-y2k" id="ycg-XC-rTl"/>
                         <outlet property="thirdPeriod" destination="7Nr-1t-ZZX" id="Hxa-fL-q0l"/>
-                        <outlet property="thridFreeSwitch" destination="S0w-jf-y2k" id="JIr-kb-gKc"/>
                         <outlet property="titleMessage" destination="Ud3-Qh-Iyc" id="bsr-U4-sXq"/>
                     </connections>
                 </viewController>
