@@ -133,7 +133,7 @@ class Free_Period_Signup_ViewController: UIViewController {
            let userUID = user.uid
            let db = Firestore.firestore()
            let ref = db.collection("users").document(userUID)
-            
+           
            while i < numFrees {
                
                let freeNumber = i + 1
