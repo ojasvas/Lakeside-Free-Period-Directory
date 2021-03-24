@@ -103,11 +103,11 @@ class Signup_ViewController: UIViewController {
         }
         
         // Just checking for two numbers
-        for char in emailGradYrsTest {
-            if !char.isNumber {
-                return false
-            }
-        }
+//        for char in emailGradYrsTest {
+//            if !char.isNumber {
+//                return false
+//            }
+//        }
         
         let domainStart = email.index(after: numEnd)
         let domainEnd = email.index(email.endIndex, offsetBy: -1)
