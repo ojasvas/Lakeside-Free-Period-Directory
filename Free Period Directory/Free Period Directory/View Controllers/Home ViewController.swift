@@ -28,7 +28,7 @@ class Home_ViewController: UIViewController {
                 let lastName = document.get("lastname") as! String
                 let free1 = document.get("free1") as! String
                 let free2 = document.get("free2") as! String
-                self.welcome.text = "Welcome \(firstName) \(lastName)! Your have \(free1) and \(free2) frees"
+                self.welcome.text = "Welcome \(firstName) \(lastName)! You have \(free1) and \(free2) frees"
             } else {
                 print("Document does not exist")
             }

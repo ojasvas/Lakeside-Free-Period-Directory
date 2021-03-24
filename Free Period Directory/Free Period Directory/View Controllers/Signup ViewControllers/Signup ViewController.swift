@@ -50,7 +50,17 @@ class Signup_ViewController: UIViewController {
             return "Please fill in all the fields"
         }
         
-        // !!!!!!!!!! TODO !!!!!!!!!! Call email validation method here!
+        // Check to see if the email is believable and for Lakeside
+        let cleanedFirst = firstNameTextField.text!.trimmingCharacters(in:.whitespacesAndNewlines)
+        let cleanedLast = lastNameTextField.text!.trimmingCharacters(in:.whitespacesAndNewlines)
+        let cleanedEmail = emailTextField.text!.trimmingCharacters(in:.whitespacesAndNewlines)
+        
+        if !isEmailValid(cleanedEmail) {
+            return "Please enter a real email with appropriate characters"
+        }
+        if !isEmailLakeside(cleanedFirst, cleanedLast, cleanedEmail) {
+            return "Please enter your Lakeside email"
+        }
         
         // Check to see if the password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -64,7 +74,51 @@ class Signup_ViewController: UIViewController {
         return nil
     }
     
-    // !!!!!!!!!! TODO !!!!!!!!!! We should figure out how to validate lakeside emails
+    // Uses regex to allow expected characters and check overall email format
+    // https://stackoverflow.com/a/41782027
+    func isEmailValid(_ email: String) -> Bool {
+        let __firstpart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
+        let __serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
+        let __emailRegex = __firstpart + "@" + __serverpart + "[A-Za-z]{2,8}"
+        let __emailPredicate = NSPredicate(format: "SELF MATCHES %@", __emailRegex)
+        return __emailPredicate.evaluate(with: email)
+    }
+    
+    // Checks that email follows Lakeside format
+    // Compares test substrings to appropriate sections of user inputted email
+    func isEmailLakeside(_ first: String, _ last: String, _ email: String) -> Bool {
+        var emailNamesTest = String()
+        emailNamesTest += first.lowercased() + last[last.startIndex...last.startIndex].lowercased()
+        
+        let numStart = email.index(email.startIndex, offsetBy: emailNamesTest.count)
+        let numEnd = email.index(after: numStart)
+        var emailGradYrsTest = String()
+        emailGradYrsTest += email[numStart...numEnd]
+        
+        let emailDomainTest = "@lakesideschool.org"
+        
+        let emailNames = email[email.startIndex..<numStart]
+        if emailNames != emailNamesTest {
+            return false
+        }
+        
+        // Just checking for two numbers
+        for char in emailGradYrsTest {
+            if !char.isNumber {
+                return false
+            }
+        }
+        
+        let domainStart = email.index(after: numEnd)
+        let domainEnd = email.index(email.endIndex, offsetBy: -1)
+        var emailDomain = String()
+        emailDomain += email[domainStart...domainEnd]
+        if emailDomain != emailDomainTest {
+            return false
+        }
+        
+        return true
+    }
     
     // Checks to see if the password is valid
     func isPasswordValid(_ password : String) -> Bool{

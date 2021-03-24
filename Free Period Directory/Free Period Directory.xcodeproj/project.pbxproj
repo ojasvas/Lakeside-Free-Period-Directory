@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F123A61260BE49B008E1951 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F123A60260BE49B008E1951 /* Extensions.swift */; };
 		3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AE7725E2219200B2A6C1 /* AppDelegate.swift */; };
 		3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AE7925E2219200B2A6C1 /* SceneDelegate.swift */; };
 		3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AE7B25E2219200B2A6C1 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		3818FB2E5528ECBF9A406349 /* Pods-Free Period Directory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.release.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.release.xcconfig"; sourceTree = "<group>"; };
+		3F123A60260BE49B008E1951 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3F31AE7425E2219200B2A6C1 /* Free Period Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Free Period Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F31AE7725E2219200B2A6C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F31AE7925E2219200B2A6C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				3FE2184325E636C7004C4E51 /* Constants.swift */,
+				3F123A60260BE49B008E1951 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */,
+				3F123A61260BE49B008E1951 /* Extensions.swift in Sources */,
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
