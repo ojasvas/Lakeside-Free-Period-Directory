@@ -19,6 +19,7 @@
 		3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */; };
 		3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */; };
 		3FE2184425E636C7004C4E51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2184325E636C7004C4E51 /* Constants.swift */; };
+		4A56428C261286B300B860BF /* Course Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A56428B261286B300B860BF /* Course Signup ViewController.swift */; };
 		7D8110E6091F440435CDC098 /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home ViewController.swift"; sourceTree = "<group>"; };
 		3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Free Period Signup ViewController.swift"; sourceTree = "<group>"; };
 		3FE2184325E636C7004C4E51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4A56428B261286B300B860BF /* Course Signup ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Course Signup ViewController.swift"; path = "../../../../../../../Downloads/Lakeside-Free-Period-Directory-master-5/Free Period Directory/Free Period Directory/View Controllers/Signup ViewControllers/Course Signup ViewController.swift"; sourceTree = "<group>"; };
 		777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Free_Period_Directory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810B4D51D384A700097AAC58 /* Pods-Free Period Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.debug.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 			children = (
 				3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */,
 				3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */,
+				4A56428B261286B300B860BF /* Course Signup ViewController.swift */,
 			);
 			path = "Signup ViewControllers";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */,
 				3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */,
 				3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */,
+				4A56428C261286B300B860BF /* Course Signup ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +410,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25BU5XQ24H;
 				INFOPLIST_FILE = "Free Period Directory/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -426,6 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25BU5XQ24H;
 				INFOPLIST_FILE = "Free Period Directory/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

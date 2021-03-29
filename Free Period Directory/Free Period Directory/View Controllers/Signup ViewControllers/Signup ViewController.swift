@@ -22,6 +22,9 @@ class Signup_ViewController: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        goBack()
+    }
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
@@ -195,6 +198,14 @@ class Signup_ViewController: UIViewController {
         view.window?.makeKeyAndVisible()
         
         
+    }
+    
+    func goBack(){
+        let initialViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.initialViewController) as? ViewController
+        
+        view.window?.rootViewController = initialViewController
+        view.window?.makeKeyAndVisible()
     }
         
 }
