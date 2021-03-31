@@ -16,6 +16,9 @@ class Login_ViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        goBack()
+    }
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
@@ -84,6 +87,14 @@ class Login_ViewController: UIViewController {
                 self.goToHomescreen()
             }
         }
+    }
+    
+    func goBack(){
+        let initialViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.initialViewController) as? ViewController
+        
+        view.window?.rootViewController = initialViewController
+        view.window?.makeKeyAndVisible()
     }
     
     func goToHomescreen() {
