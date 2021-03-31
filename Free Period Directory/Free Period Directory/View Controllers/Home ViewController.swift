@@ -7,11 +7,22 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 
 class Home_ViewController: UIViewController {
 
     @IBOutlet weak var welcome: UILabel!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        signOutCurrentUser()
+    }
+    
+    @IBAction func deleteAccountButtonTapped(_ sender: Any) {
+        showDeletionAlert()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +47,81 @@ class Home_ViewController: UIViewController {
         
         
         self.view.addSubview(welcome)
+        errorLabel.alpha = 0
 
         // Do any additional setup after loading the view.
+    }
+    
+    func deleteAccount(){
+        let user = Auth.auth().currentUser
+        //From https://stackoverflow.com/questions/49575903/swift4-delete-user-accounts-from-firebase-authentication-system
+        self.deleteUserDocument()
+        user?.delete { (error) in
+            if error != nil {
+            self.errorLabel.text = "Error occurred in account deletion"
+            self.errorLabel.alpha = 1
+          } else {
+            self.goToInitialScreen()
+          }
+        }
+    }
+    
+    func signOutCurrentUser(){
+        do {
+            try Auth.auth().signOut()
+            self.goToInitialScreen()
+        } catch{
+            self.errorLabel.text = "Error in signing out"
+        }
+    }
+    
+    func getCurrentUserID() -> Any?{
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        if(uid != nil){
+            let myUid = uid!
+            return myUid
+        }
+        else{
+            return nil
+        }
+    }
+    
+    func deleteUserDocument(){
+        let myUid = getCurrentUserID()
+        let db = Firestore.firestore()
+        db.collection("users").whereField("uid", isEqualTo: myUid!).getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    db.collection("users").document(document.documentID).delete()
+                }
+            }
+        }
+    }
+    
+    func showDeletionAlert(){
+        let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete this account?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped cancel")}))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteAccount()}))
+        present(alert, animated: true)
+    }
+    
+    func showLogoutAlert(){
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of this account?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped cancel")}))
+        alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: {action in self.signOutCurrentUser()}))
+        present(alert, animated: true)
+    }
+    
+    func goToInitialScreen() {
+        
+        let viewController =
+            storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.initialViewController) as? ViewController
+        
+        view.window?.rootViewController = viewController
+        view.window?.makeKeyAndVisible()
     }
     
     /*

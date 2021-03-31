@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 
 class Free_Period_Signup_ViewController: UIViewController {
@@ -146,6 +147,14 @@ class Free_Period_Signup_ViewController: UIViewController {
             self.goToHomescreen()
         }
    }
+//    func goToNextScreen(){
+//        let courseSignupViewController =
+//            storyboard?.instantiateViewController(identifier: Constants.Storyboard.courseSignupViewController) as? Course_Signup_ViewController
+//        view.window?.rootViewController = courseSignupViewController
+//        view.window?.makeKeyAndVisible()
+//    }
+    
+    
     func goToHomescreen() {
         
         let homeViewController =

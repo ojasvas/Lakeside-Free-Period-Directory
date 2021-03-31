@@ -9,6 +9,17 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+// https://stackoverflow.com/questions/58952151/strong-password-overlay-on-uitextfield
+// fixed strong password overlay bug
+extension UITextField {
+    func disableAutoFill() {
+        if #available(iOS 12, *) {
+            textContentType = .oneTimeCode
+        } else {
+            textContentType = .init(rawValue: "")
+        }
+    }
+}
 
 class Signup_ViewController: UIViewController {
 
@@ -22,6 +33,9 @@ class Signup_ViewController: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        goBack()
+    }
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
@@ -32,6 +46,8 @@ class Signup_ViewController: UIViewController {
     }
     
     func setUpElements() {
+        
+        passwordTextField.disableAutoFill()
         
         // Hide the error label
         errorLabel.alpha = 0
@@ -195,6 +211,14 @@ class Signup_ViewController: UIViewController {
         view.window?.makeKeyAndVisible()
         
         
+    }
+    
+    func goBack(){
+        let initialViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.initialViewController) as? ViewController
+        
+        view.window?.rootViewController = initialViewController
+        view.window?.makeKeyAndVisible()
     }
         
 }
