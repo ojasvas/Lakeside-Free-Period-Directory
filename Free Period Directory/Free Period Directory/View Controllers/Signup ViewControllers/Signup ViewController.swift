@@ -103,36 +103,58 @@ class Signup_ViewController: UIViewController {
     // Checks that email follows Lakeside format
     // Compares test substrings to appropriate sections of user inputted email
     func isEmailLakeside(_ first: String, _ last: String, _ email: String) -> Bool {
-        var emailNamesTest = String()
-        emailNamesTest += first.lowercased() + last[last.startIndex...last.startIndex].lowercased()
+        var emailIdIndex = 0
+        for (index, char) in email.enumerated() {
+            if char == "@" {
+                emailIdIndex = index
+                break
+            }
+        }
+        let emailIdSection = email[email.startIndex..<email.index(email.startIndex, offsetBy: emailIdIndex)]
+        var emailIdTest = first.lowercased() + last[last.startIndex...last.startIndex].lowercased()
         
-        let numStart = email.index(email.startIndex, offsetBy: emailNamesTest.count)
-        let numEnd = email.index(after: numStart)
-        var emailGradYrsTest = String()
-        emailGradYrsTest += email[numStart...numEnd]
+        var testNumStart = 0
+        var testNumEnd = 0
+        for (index, char) in email.enumerated() {
+            if char.isNumber && testNumStart == 0 {
+                testNumStart = index
+            } else if char.isNumber && testNumStart != 0 && testNumEnd == 0 {
+                testNumEnd = index
+                break
+            }
+        }
+        var gradYrsTest = Int()
+        if testNumEnd == 0 {
+            return false
+        } else if testNumEnd - testNumStart != 1 {
+            return false
+        } else {
+            let numStart = Int(email[email.index(email.startIndex, offsetBy: testNumStart)...email.index(email.startIndex, offsetBy: testNumStart)]) ?? 0
+            let numEnd = Int(email[email.index(email.startIndex, offsetBy: testNumEnd)...email.index(email.startIndex, offsetBy: testNumEnd)]) ?? 0
+            gradYrsTest = numStart * 10 + numEnd
+        }
+        // https://coderwall.com/p/b8pz5q/swift-4-current-year-mont-day
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = format.string(from: date)
+        let twoDigitYrIndex = formattedDate.index(formattedDate.startIndex, offsetBy: 2)
+        let twoDigitYr = Int(formattedDate[twoDigitYrIndex...formattedDate.index(after: twoDigitYrIndex)]) ?? 0
+        if (gradYrsTest < twoDigitYr) || (gradYrsTest > twoDigitYr + 3) {
+            return false
+        }
+        
+        emailIdTest += String(gradYrsTest)
+        if emailIdTest != emailIdSection {
+            return false
+        }
         
         let emailDomainTest = "@lakesideschool.org"
-        
-        let emailNames = email[email.startIndex..<numStart]
-        if emailNames != emailNamesTest {
+        let emailDomainSection = email[email.index(email.startIndex, offsetBy: emailIdIndex)..<email.endIndex]
+        if emailDomainTest != emailDomainSection {
             return false
         }
-        
-        // Just checking for two numbers
-//        for char in emailGradYrsTest {
-//            if !char.isNumber {
-//                return false
-//            }
-//        }
-        
-        let domainStart = email.index(after: numEnd)
-        let domainEnd = email.index(email.endIndex, offsetBy: -1)
-        var emailDomain = String()
-        emailDomain += email[domainStart...domainEnd]
-        if emailDomain != emailDomainTest {
-            return false
-        }
-        
+
         return true
     }
     
