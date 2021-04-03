@@ -17,6 +17,7 @@
 		3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */; };
 		3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */; };
 		3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */; };
+		3F6F4E5226181ED60024CAEA /* Profiles ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */; };
 		3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */; };
 		3FE2184425E636C7004C4E51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2184325E636C7004C4E51 /* Constants.swift */; };
 		7D8110E6091F440435CDC098 /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */; };
@@ -36,6 +37,7 @@
 		3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signup ViewController.swift"; sourceTree = "<group>"; };
 		3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login ViewController.swift"; sourceTree = "<group>"; };
 		3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home ViewController.swift"; sourceTree = "<group>"; };
+		3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profiles ViewController.swift"; sourceTree = "<group>"; };
 		3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Free Period Signup ViewController.swift"; sourceTree = "<group>"; };
 		3FE2184325E636C7004C4E51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Free_Period_Directory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				3F31AE7B25E2219200B2A6C1 /* ViewController.swift */,
 				3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */,
 				3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */,
+				3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
+				3F6F4E5226181ED60024CAEA /* Profiles ViewController.swift in Sources */,
 				3FE2184425E636C7004C4E51 /* Constants.swift in Sources */,
 				3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */,
 				3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */,
