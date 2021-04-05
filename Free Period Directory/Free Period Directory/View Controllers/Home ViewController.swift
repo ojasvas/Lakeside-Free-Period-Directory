@@ -30,21 +30,24 @@ class Home_ViewController: UIViewController {
         // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase
         guard let user = Auth.auth().currentUser else { return }
         let userUID = user.uid
-        let db = Firestore.firestore()
-        let ref = db.collection("users").document(userUID)
+        let testUser = UserProfile(uid: userUID)
         
-        ref.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let firstName = document.get("firstname") as! String
-                let lastName = document.get("lastname") as! String
-                let free1 = document.get("free1") as! String
-                let free2 = document.get("free2") as! String
-                self.welcome.text = "Welcome \(firstName) \(lastName)! You have \(free1) and \(free2) frees"
-            } else {
-                print("Document does not exist")
-            }
+        testUser.getFirstName() { (data) in
+            let firstName = data
+            self.welcome.text = "Welcome \(firstName) "
         }
-        
+        testUser.getLastName() { (data) in
+            let lastName = data
+            self.welcome.text = (self.welcome.text ?? "") + (lastName) + "! You have "
+        }
+        testUser.getFreeOne() { (data) in
+            let free1 = data
+            self.welcome.text = (self.welcome.text ?? "") + (free1) + " and "
+        }
+        testUser.getFreeTwo() { (data) in
+            let free2 = data
+            self.welcome.text = (self.welcome.text ?? "") + (free2) + " frees"
+        }
         
         self.view.addSubview(welcome)
         errorLabel.alpha = 0
