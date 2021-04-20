@@ -13,7 +13,7 @@ struct Constants {
         
         static let freePeriodSignupViewController = "Free_Period_Signup_ViewController"
         static let homeViewController = "Home_ViewController"
-        static let courseSignupViewController = "Course_Signup_ViewController"
+        //static let courseSignupViewController = "Course_Signup_ViewController"
         static let initialViewController = "Initial_ViewController"
         static let signupViewController = "Signup_ViewController"
         static let loginViewController = "Login_ViewController"
