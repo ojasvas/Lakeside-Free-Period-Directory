@@ -46,9 +46,8 @@ class Free_Period_Signup_ViewController: UIViewController {
     
     @IBOutlet weak var eighthFreeSwitch: UISwitch!
     
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -111,7 +110,7 @@ class Free_Period_Signup_ViewController: UIViewController {
         return frees
     }
 
-    @IBAction func submitPressed(_ sender: Any) {
+    @IBAction func nextPressed(_ sender: Any) {
         
         // check validity
         let isValid = validateSwitches()
@@ -144,23 +143,13 @@ class Free_Period_Signup_ViewController: UIViewController {
                ])
                i = i + 1
             }
-            self.goToHomescreen()
+            self.goToNextScreen()
         }
    }
     func goToNextScreen(){
         let courseSignupViewController =
             storyboard?.instantiateViewController(identifier: Constants.Storyboard.courseSignupViewController) as? Course_Signup_ViewController
         view.window?.rootViewController = courseSignupViewController
-        view.window?.makeKeyAndVisible()
-    }
-    
-    
-    func goToHomescreen() {
-        
-        let homeViewController =
-            storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? Home_ViewController
-        
-        view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
 }
