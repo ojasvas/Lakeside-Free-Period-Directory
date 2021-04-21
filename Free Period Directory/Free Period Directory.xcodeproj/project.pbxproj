@@ -21,13 +21,10 @@
 		3F6F4E5226181ED60024CAEA /* Profiles ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */; };
 		3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */; };
 		3FE2184425E636C7004C4E51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2184325E636C7004C4E51 /* Constants.swift */; };
-<<<<<<< HEAD
 		4A1300CA262C0C1200020D2F /* Study Spot ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1300C9262C0C1200020D2F /* Study Spot ViewController.swift */; };
 		4AB442DB26152568005B6234 /* Course Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB442DA26152568005B6234 /* Course Signup ViewController.swift */; };
 		4AB442F5261D7E86005B6234 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB442F4261D7E86005B6234 /* CourseCell.swift */; };
 		7D8110E6091F440435CDC098 /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */; };
-=======
->>>>>>> 126399677f7407c29ac33866e91a74e7fcfe44ff
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,13 +45,10 @@
 		3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profiles ViewController.swift"; sourceTree = "<group>"; };
 		3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Free Period Signup ViewController.swift"; sourceTree = "<group>"; };
 		3FE2184325E636C7004C4E51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		4A1300C9262C0C1200020D2F /* Study Spot ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Study Spot ViewController.swift"; sourceTree = "<group>"; };
 		4AB442DA26152568005B6234 /* Course Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course Signup ViewController.swift"; sourceTree = "<group>"; };
 		4AB442F4261D7E86005B6234 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		777A212C81B1B8CA1457E5FD /* Pods_Free_Period_Directory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Free_Period_Directory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-=======
->>>>>>> 126399677f7407c29ac33866e91a74e7fcfe44ff
 		810B4D51D384A700097AAC58 /* Pods-Free Period Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.debug.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,12 +114,9 @@
 			children = (
 				3F31AEA225E2D97200B2A6C1 /* Signup ViewController.swift */,
 				3FDBBD5D25F73D0D0059F4F9 /* Free Period Signup ViewController.swift */,
-<<<<<<< HEAD
 				4AB442DA26152568005B6234 /* Course Signup ViewController.swift */,
 				4AB442F4261D7E86005B6234 /* CourseCell.swift */,
 				4A1300C9262C0C1200020D2F /* Study Spot ViewController.swift */,
-=======
->>>>>>> 126399677f7407c29ac33866e91a74e7fcfe44ff
 			);
 			path = "Signup ViewControllers";
 			sourceTree = "<group>";
@@ -275,20 +266,14 @@
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
-<<<<<<< HEAD
 				4AB442F5261D7E86005B6234 /* CourseCell.swift in Sources */,
-=======
 				3F6F4E5226181ED60024CAEA /* Profiles ViewController.swift in Sources */,
->>>>>>> 126399677f7407c29ac33866e91a74e7fcfe44ff
 				3FE2184425E636C7004C4E51 /* Constants.swift in Sources */,
 				3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */,
 				3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */,
 				3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */,
-<<<<<<< HEAD
 				4AB442DB26152568005B6234 /* Course Signup ViewController.swift in Sources */,
 				4A1300CA262C0C1200020D2F /* Study Spot ViewController.swift in Sources */,
-=======
->>>>>>> 126399677f7407c29ac33866e91a74e7fcfe44ff
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
