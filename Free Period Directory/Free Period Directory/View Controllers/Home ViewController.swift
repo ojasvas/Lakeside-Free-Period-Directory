@@ -26,6 +26,7 @@ class Home_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.alpha = 0
         // call the user uid to set the value of his/her/their frees
         // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase
         guard let user = Auth.auth().currentUser else { return }
@@ -55,13 +56,14 @@ class Home_ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //Deletes account from firebase authentication database
     func deleteAccount(){
         let user = Auth.auth().currentUser
         //From https://stackoverflow.com/questions/49575903/swift4-delete-user-accounts-from-firebase-authentication-system
         self.deleteUserDocument()
         user?.delete { (error) in
             if error != nil {
-            self.errorLabel.text = "Error occurred in account deletion"
+            self.showError("Error occurred in account deletion")
             self.errorLabel.alpha = 1
           } else {
             self.goToInitialScreen()
@@ -69,15 +71,17 @@ class Home_ViewController: UIViewController {
         }
     }
     
+    //Signs out the current user
     func signOutCurrentUser(){
         do {
             try Auth.auth().signOut()
             self.goToInitialScreen()
         } catch{
-            self.errorLabel.text = "Error in signing out"
+            self.showError("Error in signing out")
         }
     }
     
+    //Gets the userID of the current user
     func getCurrentUserID() -> Any?{
         let user = Auth.auth().currentUser
         let uid = user?.uid
@@ -90,6 +94,7 @@ class Home_ViewController: UIViewController {
         }
     }
     
+    //Deletes the user account from Firestore database "users"
     func deleteUserDocument(){
         let myUid = getCurrentUserID()
         let db = Firestore.firestore()
@@ -104,6 +109,13 @@ class Home_ViewController: UIViewController {
         }
     }
     
+    func showError(_ message:String) {
+        
+        errorLabel.text = message
+        errorLabel.alpha = 1
+    }
+    
+    //Alerts the user to confirm that they want to delete their account
     func showDeletionAlert(){
         let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete this account?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped cancel")}))
@@ -111,6 +123,7 @@ class Home_ViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    //Alerts the user to confirm that they would like to log out
     func showLogoutAlert(){
         let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of this account?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped cancel")}))
