@@ -128,8 +128,12 @@ class UserProfile {
         vertStack.spacing = 20.0
         vertStack.alignment = .fill
         vertStack.distribution = .fillEqually
-        
-        view.addSubview(vertStack)
+        vertStack.spacing = UIStackView.spacingUseSystem
+        vertStack.isLayoutMarginsRelativeArrangement = true
+        vertStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+
+        vertStack.customize()
         
         self.getFirstName() { (data) in
             let firstName = data
@@ -150,8 +154,8 @@ class UserProfile {
             let freeTwo = data
             self.frees.text = (self.frees.text ?? "") + (freeTwo)
         }
-        vertStack.addArrangedSubview(name)
-        name.textAlignment = NSTextAlignment.center
+        vertStack.addArrangedSubview(frees)
+        frees.textAlignment = NSTextAlignment.center
         
         view.addSubview(vertStack)
         
