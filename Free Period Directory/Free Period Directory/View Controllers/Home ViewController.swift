@@ -24,6 +24,10 @@ class Home_ViewController: UIViewController {
         showDeletionAlert()
     }
     
+    @IBAction func profilesButtonTapped(_ sender: Any) {
+        goToProfilesScreen()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
@@ -140,14 +144,11 @@ class Home_ViewController: UIViewController {
         view.window?.makeKeyAndVisible()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func goToProfilesScreen() {
+        let profilesViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.profilesViewController) as? Profiles_ViewController
+        view.window?.rootViewController = profilesViewController
+        view.window?.makeKeyAndVisible()
     }
-    */
 
 }

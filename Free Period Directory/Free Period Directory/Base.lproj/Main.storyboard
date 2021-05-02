@@ -257,6 +257,14 @@
                                     <action selector="deleteAccountButtonTapped:" destination="5cE-YA-ehb" eventType="touchUpInside" id="EPP-K0-ra6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHz-mk-Sxm">
+                                <rect key="frame" x="306" y="158" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Profiles"/>
+                                <connections>
+                                    <action selector="profilesButtonTapped:" destination="5cE-YA-ehb" eventType="touchUpInside" id="MVa-eJ-n54"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XFj-5S-Z9N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -809,8 +817,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1A-yw-P9R">
-                                <rect key="frame" x="30" y="44" width="354" height="818"/>
+                                <rect key="frame" x="0.0" y="33" width="394" height="863"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ktp-xg-nDq">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="863"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="394" id="hTb-fP-E2f"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="c1J-ae-J17"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Q48-Ub-mGQ"/>
                             </scrollView>
@@ -818,6 +834,10 @@
                         <viewLayoutGuide key="safeArea" id="KEZ-hk-Z2G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="i1A-yw-P9R" id="qLR-Q9-V56"/>
+                        <outlet property="vertStack" destination="ktp-xg-nDq" id="t7h-bv-1D5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKo-SK-mal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
