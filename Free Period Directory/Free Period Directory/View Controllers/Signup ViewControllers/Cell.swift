@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CourseCell: UITableViewCell {
+class Cell: UITableViewCell {
     
-    @IBOutlet weak var courseName: UILabel!
+    @IBOutlet weak var name: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

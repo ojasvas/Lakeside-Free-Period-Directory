@@ -158,9 +158,7 @@ class Free_Period_Signup_ViewController: UIViewController {
 
         let homeViewController =
             storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? Home_ViewController
-
         view.window?.rootViewController = homeViewController
-126399677f7407c29ac33866e91a74e7fcfe44ff
         view.window?.makeKeyAndVisible()
     }
 }

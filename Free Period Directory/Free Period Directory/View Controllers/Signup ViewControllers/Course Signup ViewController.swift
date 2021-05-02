@@ -30,10 +30,7 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
     
     var coursesSelected = [String]()
     
-    private var coursesCollectionRef: CollectionReference!
-    
     override func viewDidLoad() {
-        coursesCollectionRef = Firestore.firestore().collection("courses")
         getData() 
         super.viewDidLoad()
         
@@ -90,7 +87,7 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
         filteredData = []
         
         if searchText == ""{
-            filteredData = data
+            filteredData = []
         }
         
         else{
@@ -99,8 +96,8 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
                     filteredData.append(i)
                 }
             }
-            self.searchTableView.reloadData()
         }
+        self.searchTableView.reloadData()
     }
     
     @IBAction func nextPressed(_ sender: Any) {
@@ -125,7 +122,7 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
             
             while i < coursesSelected.count {
                 let courseNum = i + 1
-                let courseName = "Course \(String(courseNum))"
+                let courseName = "course\(String(courseNum))"
                 ref.updateData([
                    courseName: coursesSelected[i]
                 ])
@@ -137,9 +134,9 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func goToNextScreen(){
-        let courseSignupViewController =
+        let studySpotViewController =
             storyboard?.instantiateViewController(identifier: Constants.Storyboard.studySpotViewController) as? Study_Spot_ViewController
-        view.window?.rootViewController = courseSignupViewController
+        view.window?.rootViewController = studySpotViewController
         view.window?.makeKeyAndVisible()
     }
     
@@ -159,29 +156,21 @@ extension Course_Signup_ViewController: UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: true)
         // https://stackoverflow.com/questions/37447124/how-do-i-create-two-table-views-in-one-view-controller-with-two-custom-uitablevi
         if tableView == searchTableView{
-            guard let cell = tableView.cellForRow(at: indexPath) as? CourseCell else {return}
+            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
             
             var courseRepeat = false
             
             for i in coursesSelected {
-                if i == cell.courseName.text{
+                if i == cell.name.text{
                     courseRepeat = true
                 }
             }
             
             if courseRepeat == false{
-                coursesSelected.append(cell.courseName.text ?? "")
+                coursesSelected.append(cell.name.text ?? "")
                 selectedTableView.reloadData()
             }
         }
-        /* if tableView == selectedTableView{
-            guard let cell = tableView.cellForRow(at: indexPath) as? CourseCell else {return}
-            if coursesSelected.contains(cell.courseName.text!){
-                // https://stackoverflow.com/questions/27878798/remove-specific-array-element-equal-to-string-swift
-                coursesSelected.removeAll{$0 == cell.courseName.text}
-                selectedTableView.reloadData()
-            }
-        }*/
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -216,12 +205,12 @@ extension Course_Signup_ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         switch tableView {
         case searchTableView:
-            let cell = searchTableView.dequeueReusableCell(withIdentifier: "courseCell")! as! CourseCell
-            cell.courseName?.text = filteredData[indexPath.row]
+            let cell = searchTableView.dequeueReusableCell(withIdentifier: "courseCell")! as! Cell
+            cell.name?.text = filteredData[indexPath.row]
             return cell
         case selectedTableView:
-            let cell = selectedTableView.dequeueReusableCell(withIdentifier: "selectedCourseCell")! as! CourseCell
-            cell.courseName?.text = coursesSelected[indexPath.row]
+            let cell = selectedTableView.dequeueReusableCell(withIdentifier: "selectedCourseCell")! as! Cell
+            cell.name?.text = coursesSelected[indexPath.row]
             cell.backgroundColor = UIColor.gray
             return cell
         default:
