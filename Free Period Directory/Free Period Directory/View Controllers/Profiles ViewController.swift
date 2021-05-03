@@ -51,10 +51,26 @@ class Profiles_ViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     let uid = document.documentID
-                    docIDArray.append(uid)
+                    let myUid = self.getCurrentUserID() as! String
+                    if myUid != uid{
+                        docIDArray.append(uid)
+                    }
                 }
                 completion(docIDArray)
             }
+        }
+    }
+    
+    //Gets the userID of the current user
+    func getCurrentUserID() -> Any?{
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        if(uid != nil){
+            let myUid = uid!
+            return myUid
+        }
+        else{
+            return nil
         }
     }
 
