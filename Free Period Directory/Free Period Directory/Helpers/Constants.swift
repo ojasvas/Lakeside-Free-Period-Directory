@@ -20,5 +20,6 @@ struct Constants {
         static let loginViewController = "Login_ViewController"
         static let studySpotViewController = "Study_Spot_ViewController"
         static let interestSignupViewController = "Interest_Signup_ViewController"
+        static let expandedProfileViewController = "Expanded_Profile_ViewController"
     }
 }

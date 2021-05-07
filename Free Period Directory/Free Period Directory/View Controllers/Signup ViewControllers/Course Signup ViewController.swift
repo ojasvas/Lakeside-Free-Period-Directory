@@ -201,7 +201,7 @@ extension Course_Signup_ViewController: UITableViewDataSource{
         }
     }
     
-    //TableVIew setup
+    //TableView setup
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         switch tableView {
         case searchTableView:

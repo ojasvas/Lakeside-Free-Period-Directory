@@ -843,6 +843,32 @@
             </objects>
             <point key="canvasLocation" x="1828.985507246377" y="-933.48214285714278"/>
         </scene>
+        <!--Expanded Profile View Controller-->
+        <scene sceneID="IqN-ew-pKU">
+            <objects>
+                <viewController storyboardIdentifier="Expanded_Profile_ViewController" id="Eio-Z5-1Bw" customClass="Expanded_Profile_ViewController" customModule="Free_Period_Directory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0iC-xv-gxq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D5g-of-xgh">
+                                <rect key="frame" x="0.0" y="44" width="394" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="IEz-26-JxY"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Pwq-o8-Iwc"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fSr-MF-QfD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="D5g-of-xgh" id="unJ-bw-bOC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Sq-NY-3sa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2486.9565217391305" y="-933.48214285714278"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="AccentColor">
