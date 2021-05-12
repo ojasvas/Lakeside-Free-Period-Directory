@@ -40,6 +40,9 @@ class UserProfile {
     var course6 = UILabel()
     var course7 = UILabel()
     var studySpot = UILabel()
+    var interest1 = UILabel()
+    var interest2 = UILabel()
+    var interest3 = UILabel()
     let seeMoreButton = UIButton(type: .system)
     var buttonTag = 0
     
@@ -146,6 +149,33 @@ class UserProfile {
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
                 completion(document.get("course7") as? String ?? "error")
+            }
+        }
+    }
+    
+    func getInterestOne(completion: @escaping (String) -> Void) {
+        let ref = db.collection("users").document(userUID)
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                completion(document.get("interest1") as? String ?? "error")
+            }
+        }
+    }
+    
+    func getInterestTwo(completion: @escaping (String) -> Void) {
+        let ref = db.collection("users").document(userUID)
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                completion(document.get("interest2") as? String ?? "error")
+            }
+        }
+    }
+    
+    func getInterestThree(completion: @escaping (String) -> Void) {
+        let ref = db.collection("users").document(userUID)
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                completion(document.get("interest3") as? String ?? "error")
             }
         }
     }
@@ -273,13 +303,45 @@ class UserProfile {
         vertStack.addArrangedSubview(course7)
         course7.textAlignment = NSTextAlignment.center
 
-        
         self.getStudySpot() { (data) in
             let studySpot = data
             self.studySpot.text = "Favorite Study Spot: \(studySpot) "
         }
         vertStack.addArrangedSubview(studySpot)
         studySpot.textAlignment = NSTextAlignment.center
+        
+        self.getInterestOne() { (data) in
+            let interestOne = data
+            if interestOne == "error" {
+                self.interest1.text = "Interest One: N/A "
+            } else {
+                self.interest1.text = "Interest One: \(interestOne) "
+            }
+        }
+        vertStack.addArrangedSubview(interest1)
+        interest1.textAlignment = NSTextAlignment.center
+        
+        self.getInterestTwo() { (data) in
+            let interestTwo = data
+            if interestTwo == "error" {
+                self.interest2.text = "Interest Two: N/A "
+            } else {
+                self.interest2.text = "Interest Two: \(interestTwo) "
+            }
+        }
+        vertStack.addArrangedSubview(interest2)
+        interest2.textAlignment = NSTextAlignment.center
+        
+        self.getInterestThree() { (data) in
+            let interestThree = data
+            if interestThree == "error" {
+                self.interest3.text = "Interest Three: N/A "
+            } else {
+                self.interest3.text = "Interest Three: \(interestThree) "
+            }
+        }
+        vertStack.addArrangedSubview(interest3)
+        interest3.textAlignment = NSTextAlignment.center
         
 //        // add courses to the vertical stack
 //        var j = 1
@@ -307,11 +369,5 @@ class UserProfile {
 //        self.seeMoreButton.centerXAnchor.constraint(equalTo: stack.centerXAnchor).isActive = true
 //    }
 //
-    func addCourse(course: String) {
-        self.coursesArray.append(course)
-    }
-
-
-    
 }
 
