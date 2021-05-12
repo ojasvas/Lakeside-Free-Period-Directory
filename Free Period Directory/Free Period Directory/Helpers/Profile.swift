@@ -24,7 +24,7 @@ extension UIStackView {
     }
 }
 
-class UserProfile {
+class UserProfile{
 
     var userUID: String = ""
     var name = UILabel()
@@ -49,7 +49,7 @@ class UserProfile {
     init (uid: String) {
         self.userUID = uid
     }
-
+    
     let db = Firestore.firestore()
     
     // understanding how to return the values of asynchronous functions
