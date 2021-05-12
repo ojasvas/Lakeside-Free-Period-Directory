@@ -43,7 +43,7 @@ class Interest_Signup_ViewController: UIViewController, UISearchBarDelegate {
         selectedTableView.isEditing = !selectedTableView.isEditing
         selectedTableView.separatorStyle = .none
         
-        filteredData = data
+        filteredData = []
         
         interestsSelected = []
 
@@ -78,22 +78,21 @@ class Interest_Signup_ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText == ""{
-            filteredData = data
-        }
-        
-        else{
-            for i in data {
-                if i.lowercased().contains(searchText.lowercased()){
-                    filteredData.append(i)
+            filteredData = []
+
+            if searchText == ""{
+                filteredData = []
+            }
+
+            else{
+                for i in data {
+                    if i.lowercased().contains(searchText.lowercased()){
+                        filteredData.append(i)
+                    }
                 }
             }
-        }
-        self.searchTableView.reloadData()
+            self.searchTableView.reloadData()
     }
-    
-    
     
     @IBAction func submitPressed(_ sender: Any) {
         if interestsSelected.count < 1 {
@@ -104,7 +103,17 @@ class Interest_Signup_ViewController: UIViewController, UISearchBarDelegate {
             NSLog("The error alert occured.")
             }))
             self.present(errorAlert, animated: true, completion: nil)
-        } else {
+        }
+        else if interestsSelected.count > 3{
+                    // Send alert if the user has more than 7 courses
+                    // Source: developer.apple.com
+                    let errorAlert = UIAlertController(title: "Error!", message: "Please select no more than 3 interests", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The error alert occured.")
+                    }))
+                    self.present(errorAlert, animated: true, completion: nil)
+        }
+        else {
             
            // call the user uid to set the value of his/her/their interest(s)
            // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase
