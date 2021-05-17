@@ -117,7 +117,7 @@ class Free_Period_Signup_ViewController: UIViewController {
         if isValid == false {
             // Send alert if the user does select any frees
             // Source: developer.apple.com
-            let errorAlert = UIAlertController(title: "Error!", message: "Please select your frees", preferredStyle: .alert)
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select your two frees", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The error alert occured.")
             }))

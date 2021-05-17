@@ -58,7 +58,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("firstname") as? String ?? "error")
+                completion(document.get("firstname") as? String ?? "N/A")
             }
         }
     }
@@ -67,7 +67,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("lastname") as? String ?? "error")
+                completion(document.get("lastname") as? String ?? "N/A")
             }
         }
     }
@@ -76,7 +76,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("free1") as? String ?? "error")
+                completion(document.get("free1") as? String ?? "N/A")
             }
         }
     }
@@ -85,7 +85,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("free2") as? String ?? "error")
+                completion(document.get("free2") as? String ?? "N/A")
             }
         }
     }
@@ -94,7 +94,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course1") as? String ?? "error")
+                completion(document.get("course1") as? String ?? "N/A")
             }
         }
     }
@@ -103,7 +103,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course2") as? String ?? "error")
+                completion(document.get("course2") as? String ?? "N/A")
             }
         }
     }
@@ -112,7 +112,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course3") as? String ?? "error")
+                completion(document.get("course3") as? String ?? "N/A")
             }
         }
     }
@@ -121,7 +121,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course4") as? String ?? "error")
+                completion(document.get("course4") as? String ?? "N/A")
             }
         }
     }
@@ -130,7 +130,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course5") as? String ?? "error")
+                completion(document.get("course5") as? String ?? "N/A")
             }
         }
     }
@@ -139,7 +139,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course6") as? String ?? "error")
+                completion(document.get("course6") as? String ?? "N/A")
             }
         }
     }
@@ -148,7 +148,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("course7") as? String ?? "error")
+                completion(document.get("course7") as? String ?? "N/A")
             }
         }
     }
@@ -157,7 +157,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("interest1") as? String ?? "error")
+                completion(document.get("interest1") as? String ?? "N/A")
             }
         }
     }
@@ -166,7 +166,7 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("interest2") as? String ?? "error")
+                completion(document.get("interest2") as? String ?? "N/A")
             }
         }
     }
@@ -175,25 +175,16 @@ class UserProfile {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("interest3") as? String ?? "error")
+                completion(document.get("interest3") as? String ?? "N/A")
             }
         }
     }
-    
-//    func getCourse(courseNum: String, completion: @escaping (String) -> Void) {
-//        let ref = db.collection("users").document(userUID)
-//        ref.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                completion(document.get("course\(courseNum)") as? String ?? "error")
-//            }
-//        }
-//    }
 
     func getStudySpot(completion: @escaping (String) -> Void) {
         let ref = db.collection("users").document(userUID)
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
-                completion(document.get("favoriteStudySpot") as? String ?? "error")
+                completion(document.get("favoriteStudySpot") as? String ?? "No Preference")
             }
         }
     }
@@ -233,11 +224,7 @@ class UserProfile {
         
         self.getFreeTwo() { (data) in
             let freeTwo = data
-            if freeTwo == "" {
-                self.free2.text = "Free Two: N/A"
-            } else {
-                self.free2.text = "Free Two: \(freeTwo) "
-            }
+            self.free2.text = "Free Two: \(freeTwo) "
         }
         vertStack.addArrangedSubview(free2)
         free2.textAlignment = NSTextAlignment.center
@@ -272,33 +259,21 @@ class UserProfile {
         
         self.getCourseFive() { (data) in
             let courseFive = data
-            if courseFive == "error" {
-                self.course5.text = "Course Five: N/A"
-            } else {
-                self.course5.text = "Course Five: \(courseFive) "
-            }
+            self.course5.text = "Course Five: \(courseFive) "
         }
         vertStack.addArrangedSubview(course5)
         course5.textAlignment = NSTextAlignment.center
         
         self.getCourseSix() { (data) in
             let courseSix = data
-            if courseSix == "error" {
-                self.course6.text = "Course Six: N/A"
-            } else {
-                self.course6.text = "Course Six: \(courseSix) "
-            }
+            self.course6.text = "Course Six: \(courseSix) "
         }
         vertStack.addArrangedSubview(course6)
         course6.textAlignment = NSTextAlignment.center
         
         self.getCourseSeven() { (data) in
             let courseSeven = data
-            if courseSeven == "error" {
-                self.course7.text = "Course Seven: N/A"
-            } else {
-                self.course7.text = "Course Seven: \(courseSeven) "
-            }
+            self.course7.text = "Course Seven: \(courseSeven) "
         }
         vertStack.addArrangedSubview(course7)
         course7.textAlignment = NSTextAlignment.center
@@ -312,33 +287,21 @@ class UserProfile {
         
         self.getInterestOne() { (data) in
             let interestOne = data
-            if interestOne == "error" {
-                self.interest1.text = "Interest One: N/A "
-            } else {
-                self.interest1.text = "Interest One: \(interestOne) "
-            }
+            self.interest1.text = "Interest One: \(interestOne) "
         }
         vertStack.addArrangedSubview(interest1)
         interest1.textAlignment = NSTextAlignment.center
         
         self.getInterestTwo() { (data) in
             let interestTwo = data
-            if interestTwo == "error" {
-                self.interest2.text = "Interest Two: N/A "
-            } else {
-                self.interest2.text = "Interest Two: \(interestTwo) "
-            }
+            self.interest2.text = "Interest Two: \(interestTwo) "
         }
         vertStack.addArrangedSubview(interest2)
         interest2.textAlignment = NSTextAlignment.center
         
         self.getInterestThree() { (data) in
             let interestThree = data
-            if interestThree == "error" {
-                self.interest3.text = "Interest Three: N/A "
-            } else {
-                self.interest3.text = "Interest Three: \(interestThree) "
-            }
+            self.interest3.text = "Interest Three: \(interestThree) "
         }
         vertStack.addArrangedSubview(interest3)
         interest3.textAlignment = NSTextAlignment.center
@@ -361,13 +324,7 @@ class UserProfile {
         
         return vertStack
     }
-//
-//    func initializeMoreButton(stack: UIStackView) {
-//        self.seeMoreButton.setTitle("See More", for: .normal)
-//        self.seeMoreButton.translatesAutoresizingMaskIntoConstraints = false
-//        stack.addArrangedSubview(seeMoreButton)
-//        self.seeMoreButton.centerXAnchor.constraint(equalTo: stack.centerXAnchor).isActive = true
-//    }
-//
+
+
 }
 
