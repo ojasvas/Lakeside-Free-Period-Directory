@@ -21,6 +21,7 @@ class Profiles_ViewController: UIViewController {
     let maxCourses = 7
     var buttonTag = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +32,6 @@ class Profiles_ViewController: UIViewController {
         self.vertStack.spacing = 10
         self.vertStack.alignment = .fill
         self.vertStack.distribution = .fillEqually
-        
-        self.scrollView.contentSize = CGSize(width: view.frame.size.width, height: 4000)
         
         self.getDocNames() { (data) in
             let allUsers = data
@@ -45,6 +44,7 @@ class Profiles_ViewController: UIViewController {
                 self.vertStack.addArrangedSubview(profile)
                 i = i + 1
             }
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat(allUsers.count*440))
         }
     }
 

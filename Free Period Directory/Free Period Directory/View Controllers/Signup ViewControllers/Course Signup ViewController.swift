@@ -109,7 +109,18 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
             NSLog("The error alert occured.")
             }))
             self.present(errorAlert, animated: true, completion: nil)
-        } else {
+        }
+        else if coursesSelected.count > 7{
+                    // Send alert if the user has more than 7 courses
+                    // Source: developer.apple.com
+                    let errorAlert = UIAlertController(title: "Error!", message: "Please select no more than 7 courses", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The error alert occured.")
+                    }))
+                    self.present(errorAlert, animated: true, completion: nil)
+        }
+        
+        else {
             
            // call the user uid to set the value of his/her/their courses
            // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase
