@@ -185,7 +185,7 @@ class UserProfile{
         ref.getDocument { (document, error) in
             if let document = document, document.exists {
                 completion(document.get("favoriteStudySpot") as? String ?? "No Preference")
-            }
+            } 
         }
     }
     

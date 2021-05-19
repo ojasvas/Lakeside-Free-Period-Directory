@@ -18,8 +18,8 @@ class Profiles_ViewController: UIViewController {
     
     var userProfiles: [UserProfile] = []
     var profileStacks: [UIStackView] = []
-    let maxCourses = 7
-    var buttonTag = 0
+    var data: [dataType] = []
+    
     
     
     override func viewDidLoad() {
@@ -78,6 +78,61 @@ class Profiles_ViewController: UIViewController {
         else {
             return nil
         }
+    }
+    
+    //Gets the data from the entire courses database and appends it to the courses and data arrays
+    func getData() {
+        let db = Firestore.firestore()
+        db.collection("users").getDocuments{[weak self] snap, err in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+            else{
+                guard let snapshot = snap else {return}
+                for document in snapshot.documents{
+                    let i = document.data()
+                    let id = document.documentID
+                    let firstName = i["firstname"] as! String
+                    let lastName = i["lastname"] as! String
+                    let courseOne = i["course1"] as! String
+                    let courseTwo = i["course2"] as! String
+                    let courseThree = i["course3"] as! String
+                    let courseFour = i["course4"] as! String
+                    let courseFive = i["course5"] as! String
+                    let courseSix = i["course6"] as! String
+                    let courseSeven = i["course7"] as! String
+                    let freeOne = i["free1"] as! String
+                    let freeTwo = i["free2"] as! String
+                    let interestOne = i["interest1"] as! String
+                    let interestTwo = i["interest2"] as! String
+                    let interestThree = i["interest3"] as! String
+                    let studySpot = i["favoritestudySpot"] as! String
+                    self?.data.append(dataType(id: id, firstName: firstName, lastName: lastName, courseOne: courseOne, courseTwo: courseTwo, courseThree: courseThree, courseFour: courseFour, courseFive: courseFive, courseSix: courseSix, courseSeven: courseSeven, freeOne: freeOne, freeTwo: freeTwo, interestOne: interestOne, interstTwo: interestTwo, interestThree: interestThree, studySpot: studySpot))
+                }
+            }
+        }
+    }
+    
+    struct dataType: Identifiable {
+        
+        var id: String
+        var firstName: String
+        var lastName: String
+        var courseOne: String
+        var courseTwo: String
+        var courseThree: String
+        var courseFour: String
+        var courseFive: String
+        var courseSix: String
+        var courseSeven: String
+        var freeOne: String
+        var freeTwo: String
+        var interestOne: String
+        var interstTwo: String
+        var interestThree: String
+        var studySpot: String
+        
     }
     
 

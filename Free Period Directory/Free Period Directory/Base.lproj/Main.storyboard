@@ -848,7 +848,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ktp-xg-nDq">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="863"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="56"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lg-sJ-WMn">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="56"/>
+                                                <subviews>
+                                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ELG-Q0-jwq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="346" height="56"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </searchBar>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5h-gJ-nkL">
+                                                        <rect key="frame" x="346" y="0.0" width="48" height="56"/>
+                                                        <state key="normal" title="Search"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="394" id="lvi-7b-qsJ"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="394" id="hTb-fP-E2f"/>
                                         </constraints>
