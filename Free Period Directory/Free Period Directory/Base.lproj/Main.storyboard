@@ -859,7 +859,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ktp-xg-nDq">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="800" id="TFs-tV-561" userLabel="height = 440"/>
+                                            <constraint firstAttribute="height" constant="9999999999999" id="TFs-tV-561" userLabel="height = 1000"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

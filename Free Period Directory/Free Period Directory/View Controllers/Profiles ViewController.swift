@@ -49,7 +49,7 @@ class Profiles_ViewController: UIViewController {
                 self.vertStack.addArrangedSubview(profile)
                 i = i + 1
             }
-            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((allUsers.count + 1) * 440))
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((allUsers.count) * 440))
         }
     }
 
@@ -65,7 +65,6 @@ class Profiles_ViewController: UIViewController {
                 filteredData.append(i)
             }
         }
-//        print(filteredData)
         for i in filteredData {
             let userProfile = UserProfile(uid: i.id)
             let profile = userProfile.createProfile(view: self.vertStack)
@@ -73,6 +72,16 @@ class Profiles_ViewController: UIViewController {
             filteredProfiles.append(i.id)
         }
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((filteredProfiles.count) * 440))
+        
+        if filteredData.count == 0 {
+            // Send alert if no profiles match the keyword the user entered
+            // Source: developer.apple.com
+            let errorAlert = UIAlertController(title: "Error!", message: "No profiles match your keyword", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The error alert occured.")
+            }))
+            self.present(errorAlert, animated: true, completion: nil)
+        }
     }
     
     

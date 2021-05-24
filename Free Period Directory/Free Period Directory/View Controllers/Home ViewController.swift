@@ -54,7 +54,7 @@ class Home_ViewController: UIViewController {
             if free2 == "N/A" {
                 self.welcome.text = (self.welcome.text ?? "") + " free"
             } else {
-                self.welcome.text = " and " + (self.welcome.text ?? "") + (free2) + " frees"
+                self.welcome.text = (self.welcome.text ?? "") + " and " + (free2) + " frees"
             }
         }
         
