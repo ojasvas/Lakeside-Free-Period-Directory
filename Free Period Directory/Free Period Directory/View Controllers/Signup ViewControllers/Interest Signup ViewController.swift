@@ -132,6 +132,20 @@ class Interest_Signup_ViewController: UIViewController, UISearchBarDelegate {
                 ])
                 i = i + 1
             }
+            
+            if interestsSelected.count == 1 {
+                ref.updateData([
+                    "interest2": "N/A",
+                    "interest3": "N/A"
+                ])
+            }
+            
+            if interestsSelected.count == 2 {
+                ref.updateData([
+                    "interest3": "N/A"
+                ])
+            }
+            
             self.goToHomeScreen()
         }
         

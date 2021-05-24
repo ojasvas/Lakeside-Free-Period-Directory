@@ -24,7 +24,7 @@ extension UIStackView {
     }
 }
 
-class UserProfile{
+class UserProfile {
 
     var userUID: String = ""
     var name = UILabel()

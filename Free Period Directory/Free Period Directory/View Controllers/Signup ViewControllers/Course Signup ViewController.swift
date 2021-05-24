@@ -102,15 +102,15 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
     
     @IBAction func nextPressed(_ sender: Any) {
         if coursesSelected.count < 4 {
-            // Send alert if the user does not select at least 4 courses
+            // Send alert if the user does not select at least 5 courses
             // Source: developer.apple.com
-            let errorAlert = UIAlertController(title: "Error!", message: "Please select all of your courses", preferredStyle: .alert)
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select at least 5 courses", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The error alert occured.")
             }))
             self.present(errorAlert, animated: true, completion: nil)
         }
-        else if coursesSelected.count > 7{
+        else if coursesSelected.count > 7 {
                     // Send alert if the user has more than 7 courses
                     // Source: developer.apple.com
                     let errorAlert = UIAlertController(title: "Error!", message: "Please select no more than 7 courses", preferredStyle: .alert)
@@ -139,6 +139,20 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
                 ])
                 i = i + 1
             }
+            
+            if coursesSelected.count == 5 {
+                ref.updateData([
+                    "course6": "N/A",
+                    "course7": "N/A"
+                ])
+            }
+            
+            if coursesSelected.count == 6 {
+                ref.updateData([
+                    "course7": "N/A"
+                ])
+            }
+            
             self.goToNextScreen()
         }
         

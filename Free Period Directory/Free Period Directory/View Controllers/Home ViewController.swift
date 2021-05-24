@@ -47,11 +47,15 @@ class Home_ViewController: UIViewController {
         }
         testUser.getFreeOne() { (data) in
             let free1 = data
-            self.welcome.text = (self.welcome.text ?? "") + (free1) + " and "
+            self.welcome.text = (self.welcome.text ?? "") + (free1)
         }
         testUser.getFreeTwo() { (data) in
             let free2 = data
-            self.welcome.text = (self.welcome.text ?? "") + (free2) + " frees"
+            if free2 == "N/A" {
+                self.welcome.text = (self.welcome.text ?? "") + " free"
+            } else {
+                self.welcome.text = " and " + (self.welcome.text ?? "") + (free2) + " frees"
+            }
         }
         
         self.view.addSubview(welcome)

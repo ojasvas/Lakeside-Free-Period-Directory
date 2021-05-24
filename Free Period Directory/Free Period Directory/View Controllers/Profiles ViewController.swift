@@ -15,15 +15,20 @@ class Profiles_ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var vertStack: UIStackView!
+
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchButton: UIButton!
     
     var userProfiles: [UserProfile] = []
     var profileStacks: [UIStackView] = []
     var data: [dataType] = []
-    
-    
+    var filteredData: [dataType] = []
+    var filteredProfiles: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getData()
         
         view.addSubview(scrollView)
         self.scrollView.addSubview(vertStack)
@@ -44,10 +49,31 @@ class Profiles_ViewController: UIViewController {
                 self.vertStack.addArrangedSubview(profile)
                 i = i + 1
             }
-            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat(allUsers.count*440))
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((allUsers.count + 1) * 440))
         }
     }
 
+    @IBAction func searchPressed(_ sender: Any) {
+        self.removeStackViews()
+        let searchedText = searchTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        filteredProfiles.removeAll()
+        for i in data {
+            if i.allText.lowercased().contains(searchedText){
+                filteredData.append(i)
+            }
+        }
+        print(filteredData)
+        for i in filteredData {
+            let userProfile = UserProfile(uid: i.id)
+            let profile = userProfile.createProfile(view: self.vertStack)
+            self.vertStack.addArrangedSubview(profile)
+            filteredProfiles.append(i.id)
+        }
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((filteredProfiles.count) * 440))
+//        self.vertStack.addConstraints(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
+    }
+    
+    
     func getDocNames(completion: @escaping (Array<String>) -> Void) {
         var docIDArray: [String] = []
         let db = Firestore.firestore()
@@ -88,7 +114,7 @@ class Profiles_ViewController: UIViewController {
                 print((err?.localizedDescription)!)
                 return
             }
-            else{
+            else {
                 guard let snapshot = snap else {return}
                 for document in snapshot.documents{
                     let i = document.data()
@@ -107,8 +133,9 @@ class Profiles_ViewController: UIViewController {
                     let interestOne = i["interest1"] as! String
                     let interestTwo = i["interest2"] as! String
                     let interestThree = i["interest3"] as! String
-                    let studySpot = i["favoritestudySpot"] as! String
-                    self?.data.append(dataType(id: id, firstName: firstName, lastName: lastName, courseOne: courseOne, courseTwo: courseTwo, courseThree: courseThree, courseFour: courseFour, courseFive: courseFive, courseSix: courseSix, courseSeven: courseSeven, freeOne: freeOne, freeTwo: freeTwo, interestOne: interestOne, interstTwo: interestTwo, interestThree: interestThree, studySpot: studySpot))
+                    let studySpot = i["favoriteStudySpot"] as! String
+                    let allText = ("\(firstName) \(lastName) \(courseOne) \(courseTwo) \(courseThree) \(courseFour) \(courseFive) \(courseSix) \(courseSeven) \(freeOne) \(freeTwo) \(interestOne) \(interestTwo) \(interestTwo) \(studySpot)")
+                    self?.data.append(dataType(id: id, firstName: firstName, lastName: lastName, courseOne: courseOne, courseTwo: courseTwo, courseThree: courseThree, courseFour: courseFour, courseFive: courseFive, courseSix: courseSix, courseSeven: courseSeven, freeOne: freeOne, freeTwo: freeTwo, interestOne: interestOne, interstTwo: interestTwo, interestThree: interestThree, studySpot: studySpot, allText: allText))
                 }
             }
         }
@@ -132,8 +159,13 @@ class Profiles_ViewController: UIViewController {
         var interstTwo: String
         var interestThree: String
         var studySpot: String
-        
+        var allText: String
     }
     
-
+    func removeStackViews() {
+        let profileViews = vertStack.subviews
+        for subUIView in profileViews {
+            subUIView.removeFromSuperview()
+        }
+    }
 }

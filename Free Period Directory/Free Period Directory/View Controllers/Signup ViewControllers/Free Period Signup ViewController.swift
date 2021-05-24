@@ -45,6 +45,8 @@ class Free_Period_Signup_ViewController: UIViewController {
     @IBOutlet weak var seventhFreeSwitch: UISwitch!
 
     @IBOutlet weak var eighthFreeSwitch: UISwitch!
+    
+    @IBOutlet weak var noSecondFree: UISwitch!
 
     @IBOutlet weak var nextButton: UIButton!
 
@@ -52,33 +54,6 @@ class Free_Period_Signup_ViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // check if at least one switch is on
-    func validateSwitches() -> Bool {
-        if firstFreeSwitch.isOn ||
-            secondFreeSwitch.isOn ||
-            thirdFreeSwitch.isOn ||
-            fourthFreeSwitch.isOn ||
-            fifthFreeSwitch.isOn ||
-            sixthFreeSwitch.isOn ||
-            seventhFreeSwitch.isOn ||
-            eighthFreeSwitch.isOn {
-
-            return true
-        }
-        return false
     }
 
     func whatFrees() -> [String] {
@@ -107,23 +82,25 @@ class Free_Period_Signup_ViewController: UIViewController {
         if eighthFreeSwitch.isOn {
             frees.append("eighth")
         }
+        if noSecondFree.isOn {
+            frees.append("N/A")
+        }
         return frees
     }
 
     @IBAction func nextPressed(_ sender: Any) {
 
         // check validity
-        let isValid = validateSwitches()
-        if isValid == false {
-            // Send alert if the user does select any frees
+        let frees = self.whatFrees()
+        if frees.count != 2 {
+            // Send alert if the user does not select two options
             // Source: developer.apple.com
-            let errorAlert = UIAlertController(title: "Error!", message: "Please select your two frees", preferredStyle: .alert)
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select two options", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The error alert occured.")
             }))
             self.present(errorAlert, animated: true, completion: nil)
         } else {
-           let frees = whatFrees()
            let numFrees = frees.count
            var i = 0
 
