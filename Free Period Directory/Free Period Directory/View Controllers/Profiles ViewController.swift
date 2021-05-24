@@ -55,16 +55,17 @@ class Profiles_ViewController: UIViewController {
 
     @IBAction func searchPressed(_ sender: Any) {
         self.removeStackViews()
-        print("removing views")
         var searchedText = searchTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         searchedText = searchedText.lowercased()
+        filteredData.removeAll()
         filteredProfiles.removeAll()
+
         for i in data {
             if i.allText.lowercased().contains(searchedText){
                 filteredData.append(i)
             }
         }
-        print(filteredData)
+//        print(filteredData)
         for i in filteredData {
             let userProfile = UserProfile(uid: i.id)
             let profile = userProfile.createProfile(view: self.vertStack)
