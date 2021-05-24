@@ -55,7 +55,9 @@ class Profiles_ViewController: UIViewController {
 
     @IBAction func searchPressed(_ sender: Any) {
         self.removeStackViews()
-        let searchedText = searchTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        print("removing views")
+        var searchedText = searchTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        searchedText = searchedText.lowercased()
         filteredProfiles.removeAll()
         for i in data {
             if i.allText.lowercased().contains(searchedText){
@@ -70,7 +72,6 @@ class Profiles_ViewController: UIViewController {
             filteredProfiles.append(i.id)
         }
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((filteredProfiles.count) * 440))
-//        self.vertStack.addConstraints(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
     }
     
     

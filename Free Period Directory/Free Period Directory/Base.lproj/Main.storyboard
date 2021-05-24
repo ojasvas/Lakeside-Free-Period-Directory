@@ -853,19 +853,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1A-yw-P9R">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1A-yw-P9R">
                                 <rect key="frame" x="0.0" y="102" width="414" height="794"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ktp-xg-nDq">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10000" id="QLb-7K-PuM"/>
+                                            <constraint firstAttribute="height" constant="800" id="TFs-tV-561" userLabel="height = 440"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ktp-xg-nDq" firstAttribute="top" secondItem="c1J-ae-J17" secondAttribute="top" id="BIS-ii-Erd"/>
-                                    <constraint firstAttribute="bottom" secondItem="ktp-xg-nDq" secondAttribute="bottom" constant="762" id="YGl-li-Pt4"/>
                                     <constraint firstItem="Q48-Ub-mGQ" firstAttribute="bottom" secondItem="ktp-xg-nDq" secondAttribute="bottom" constant="762" id="g2j-OS-PKb"/>
                                     <constraint firstAttribute="trailing" secondItem="ktp-xg-nDq" secondAttribute="trailing" constant="20" id="hIC-Lw-hlA"/>
                                     <constraint firstItem="ktp-xg-nDq" firstAttribute="leading" secondItem="i1A-yw-P9R" secondAttribute="leading" id="sy2-n0-1qr"/>
