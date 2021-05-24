@@ -24,6 +24,9 @@ class Interest_Signup_ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var otherInterestTextField: UITextField!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        goBack()
+    }
     //Array for the data that will be displayed on the screeen
     private var data = [String]()
     
@@ -164,6 +167,13 @@ class Interest_Signup_ViewController: UIViewController, UISearchBarDelegate {
             }
         }
         otherInterestTextField.text = ""
+    }
+    
+    func goBack(){
+        let studySpotViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.studySpotViewController) as? Study_Spot_ViewController
+        view.window?.rootViewController = studySpotViewController
+        view.window?.makeKeyAndVisible()
     }
     
     func goToHomeScreen(){

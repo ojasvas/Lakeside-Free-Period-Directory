@@ -20,14 +20,14 @@ class Home_ViewController: UIViewController {
         signOutCurrentUser()
     }
     
-    @IBAction func deleteAccountButtonTapped(_ sender: Any) {
-        showDeletionAlert()
-    }
     
     @IBAction func profilesButtonTapped(_ sender: Any) {
         goToProfilesScreen()
     }
     
+    @IBAction func yourProfileButtonTapped(_ sender: Any) {
+        goToUserProfileScreen()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
@@ -39,11 +39,11 @@ class Home_ViewController: UIViewController {
         
         testUser.getFirstName() { (data) in
             let firstName = data
-            self.welcome.text = "Welcome \(firstName) "
+            self.welcome.text = "Welcome \(firstName.capitalized) "
         }
         testUser.getLastName() { (data) in
             let lastName = data
-            self.welcome.text = (self.welcome.text ?? "") + (lastName) + "! You have "
+            self.welcome.text = (self.welcome.text ?? "") + (lastName.capitalized) + "! You have "
         }
         testUser.getFreeOne() { (data) in
             let free1 = data
@@ -60,21 +60,6 @@ class Home_ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //Deletes account from firebase authentication database
-    func deleteAccount(){
-        let user = Auth.auth().currentUser
-        //From https://stackoverflow.com/questions/49575903/swift4-delete-user-accounts-from-firebase-authentication-system
-        self.deleteUserDocument()
-        user?.delete { (error) in
-            if error != nil {
-            self.showError("Error occurred in account deletion")
-            self.errorLabel.alpha = 1
-          } else {
-            self.goToInitialScreen()
-          }
-        }
-    }
-    
     //Signs out the current user
     func signOutCurrentUser(){
         do {
@@ -85,46 +70,10 @@ class Home_ViewController: UIViewController {
         }
     }
     
-    //Gets the userID of the current user
-    func getCurrentUserID() -> Any?{
-        let user = Auth.auth().currentUser
-        let uid = user?.uid
-        if(uid != nil){
-            let myUid = uid!
-            return myUid
-        }
-        else{
-            return nil
-        }
-    }
-    
-    //Deletes the user account from Firestore database "users"
-    func deleteUserDocument(){
-        let myUid = getCurrentUserID()
-        let db = Firestore.firestore()
-        db.collection("users").whereField("uid", isEqualTo: myUid!).getDocuments(){ (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    db.collection("users").document(document.documentID).delete()
-                }
-            }
-        }
-    }
-    
     func showError(_ message:String) {
         
         errorLabel.text = message
         errorLabel.alpha = 1
-    }
-    
-    //Alerts the user to confirm that they want to delete their account
-    func showDeletionAlert(){
-        let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete this account?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped cancel")}))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteAccount()}))
-        present(alert, animated: true)
     }
     
     //Alerts the user to confirm that they would like to log out
@@ -148,6 +97,13 @@ class Home_ViewController: UIViewController {
         let profilesViewController =
             storyboard?.instantiateViewController(identifier: Constants.Storyboard.profilesViewController) as? Profiles_ViewController
         view.window?.rootViewController = profilesViewController
+        view.window?.makeKeyAndVisible()
+    }
+    
+    func goToUserProfileScreen() {
+        let userProfileViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.userProfileViewController) as? UserProfileViewController
+        view.window?.rootViewController = userProfileViewController
         view.window?.makeKeyAndVisible()
     }
 
