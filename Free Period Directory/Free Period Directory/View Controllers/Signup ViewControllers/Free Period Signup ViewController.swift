@@ -46,6 +46,8 @@ class Free_Period_Signup_ViewController: UIViewController {
 
     @IBOutlet weak var eighthFreeSwitch: UISwitch!
 
+    @IBOutlet weak var noSecondFree: UISwitch!
+
     @IBOutlet weak var nextButton: UIButton!
 
     override func viewDidLoad() {
@@ -64,7 +66,7 @@ class Free_Period_Signup_ViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+
     func checkIfUserHasFrees(){
         guard let user = Auth.auth().currentUser else { return }
         let userUID = user.uid
@@ -151,12 +153,16 @@ class Free_Period_Signup_ViewController: UIViewController {
         if eighthFreeSwitch.isOn {
             frees.append("eighth")
         }
+        if noSecondFree.isOn {
+            frees.append("N/A")
+        }
         return frees
     }
 
     @IBAction func nextPressed(_ sender: Any) {
 
         // check validity
+<<<<<<< HEAD
         var isValid = validateSwitches()
         let frees = whatFrees()
         let numFrees = frees.count
@@ -165,14 +171,24 @@ class Free_Period_Signup_ViewController: UIViewController {
         }
         if isValid == false {
             // Send alert if the user does select any frees
+=======
+        let frees = self.whatFrees()
+        if frees.count != 2 {
+            // Send alert if the user does not select two options
+>>>>>>> 0ef89ef5198c8ab37d18b45a6b158fb7e7b4a648
             // Source: developer.apple.com
-            let errorAlert = UIAlertController(title: "Error!", message: "Please select your frees", preferredStyle: .alert)
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select two options", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The error alert occured.")
             }))
             self.present(errorAlert, animated: true, completion: nil)
         } else {
+<<<<<<< HEAD
             var i = 0
+=======
+           let numFrees = frees.count
+           var i = 0
+>>>>>>> 0ef89ef5198c8ab37d18b45a6b158fb7e7b4a648
 
            // call the user uid to set the value of his/her/their frees
            // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase

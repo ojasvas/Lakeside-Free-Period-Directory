@@ -15,15 +15,20 @@ class Profiles_ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var vertStack: UIStackView!
+
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBOutlet weak var searchButton: UIButton!
     
     var userProfiles: [UserProfile] = []
     var profileStacks: [UIStackView] = []
-    let maxCourses = 7
-    var buttonTag = 0
-    
+    var data: [dataType] = []
+    var filteredData: [dataType] = []
+    var filteredProfiles: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getData()
         
         view.addSubview(scrollView)
         self.scrollView.addSubview(vertStack)
@@ -39,26 +44,46 @@ class Profiles_ViewController: UIViewController {
             while i < allUsers.count {
                 let userProfile = UserProfile(uid: allUsers[i])
                 self.userProfiles.append(userProfile)
-//                self.setUpMoreButton(indexNum: i)
                 let profile = userProfile.createProfile(view: self.vertStack)
                 self.profileStacks.append(profile)
                 self.vertStack.addArrangedSubview(profile)
                 i = i + 1
             }
-            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat(allUsers.count*440))
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((allUsers.count) * 440))
         }
     }
-//
-//    func setUpMoreButton(indexNum: Int) {
-//        userProfiles[indexNum].seeMoreButton.tag = indexNum
-//        userProfiles[indexNum].seeMoreButton.addTarget(self, action: #selector(self.moreButtonClicked(sender:)), for: .touchUpInside)
-//    }
-//
-//    @objc func moreButtonClicked(sender: UIButton) {
-//        buttonTag = sender.tag
-//        self.goToExpandedProfileScreen()
-//
-//    }
+
+    @IBAction func searchPressed(_ sender: Any) {
+        self.removeStackViews()
+        var searchedText = searchTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        searchedText = searchedText.lowercased()
+        filteredData.removeAll()
+        filteredProfiles.removeAll()
+
+        for i in data {
+            if i.allText.lowercased().contains(searchedText){
+                filteredData.append(i)
+            }
+        }
+        for i in filteredData {
+            let userProfile = UserProfile(uid: i.id)
+            let profile = userProfile.createProfile(view: self.vertStack)
+            self.vertStack.addArrangedSubview(profile)
+            filteredProfiles.append(i.id)
+        }
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((filteredProfiles.count) * 440))
+        
+        if filteredData.count == 0 {
+            // Send alert if no profiles match the keyword the user entered
+            // Source: developer.apple.com
+            let errorAlert = UIAlertController(title: "Error!", message: "No profiles match your keyword", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The error alert occured.")
+            }))
+            self.present(errorAlert, animated: true, completion: nil)
+        }
+    }
+    
     
     func getDocNames(completion: @escaping (Array<String>) -> Void) {
         var docIDArray: [String] = []
@@ -70,7 +95,7 @@ class Profiles_ViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     let uid = document.documentID
                     let myUid = self.getCurrentUserID() as! String
-                    if myUid != uid{
+                    if myUid != uid {
                         docIDArray.append(uid)
                     }
                 }
@@ -80,77 +105,78 @@ class Profiles_ViewController: UIViewController {
     }
     
     //Gets the userID of the current user
-    func getCurrentUserID() -> Any?{
+    func getCurrentUserID() -> Any? {
         let user = Auth.auth().currentUser
         let uid = user?.uid
-        if(uid != nil){
+        if uid != nil {
             let myUid = uid!
             return myUid
         }
-        else{
+        else {
             return nil
         }
     }
-
-//    func addToStack(senderTag: Int) {
-//        if (userProfiles[senderTag].courses[0] != "error") {
-//            userProfiles[senderTag].course1.text = userProfiles[senderTag].courses[0]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course1)
-//            userProfiles[senderTag].course1.textAlignment = NSTextAlignment.center
-//        }
-//        if (userProfiles[senderTag].courses[1] != "error") {
-//            userProfiles[senderTag].course2.text = userProfiles[senderTag].courses[1]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course2)
-//            userProfiles[senderTag].course2.textAlignment = NSTextAlignment.center
-//        }
-//        if (userProfiles[senderTag].courses[2] != "error") {
-//            userProfiles[senderTag].course3.text = userProfiles[senderTag].courses[2]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course3)
-//            userProfiles[senderTag].course3.textAlignment = NSTextAlignment.center
-//        }
-//        if (userProfiles[senderTag].courses[3] != "error") {
-//            userProfiles[senderTag].course4.text = userProfiles[senderTag].courses[3]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course4)
-//            userProfiles[senderTag].course4.textAlignment = NSTextAlignment.center
-//        }
-//        if (userProfiles[senderTag].courses[4] != "error") {
-//            userProfiles[senderTag].course5.text = userProfiles[senderTag].courses[4]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course5)
-//            userProfiles[senderTag].course5.textAlignment = NSTextAlignment.center
-//        } else {
-//            userProfiles[senderTag].course5.text = "N/A"
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course5)
-//            userProfiles[senderTag].course5.textAlignment = NSTextAlignment.center
-//        }
-//        if (userProfiles[senderTag].courses[5] != "error") {
-//            userProfiles[senderTag].course6.text = userProfiles[senderTag].courses[5]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course6)
-//            userProfiles[senderTag].course6.textAlignment = NSTextAlignment.center
-//        } else {
-//            userProfiles[senderTag].course6.text = "N/A"
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course5)
-//            userProfiles[senderTag].course6.textAlignment = NSTextAlignment.center
-//        }
-//        if (userProfiles[senderTag].courses[6] != "error") {
-//            userProfiles[senderTag].course7.text = userProfiles[senderTag].courses[6]
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course7)
-//            userProfiles[senderTag].course7.textAlignment = NSTextAlignment.center
-//        } else {
-//            userProfiles[senderTag].course7.text = "N/A"
-//            profileStacks[senderTag].addArrangedSubview(userProfiles[senderTag].course5)
-//            userProfiles[senderTag].course7.textAlignment = NSTextAlignment.center
-//        }
-//    }
-//
-//    func goToExpandedProfileScreen() {
-//
-//        let expandedProfileViewController =
-//            storyboard?.instantiateViewController(identifier:
-//            Constants.Storyboard.expandedProfileViewController) as?
-//            Expanded_Profile_ViewController
-//
-//        view.window?.rootViewController = expandedProfileViewController
-//        view.window?.makeKeyAndVisible()
-//
-//    }
+    
+    //Gets the data from the entire courses database and appends it to the courses and data arrays
+    func getData() {
+        let db = Firestore.firestore()
+        db.collection("users").getDocuments{[weak self] snap, err in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+            else {
+                guard let snapshot = snap else {return}
+                for document in snapshot.documents{
+                    let i = document.data()
+                    let id = document.documentID
+                    let firstName = i["firstname"] as! String
+                    let lastName = i["lastname"] as! String
+                    let courseOne = i["course1"] as! String
+                    let courseTwo = i["course2"] as! String
+                    let courseThree = i["course3"] as! String
+                    let courseFour = i["course4"] as! String
+                    let courseFive = i["course5"] as! String
+                    let courseSix = i["course6"] as! String
+                    let courseSeven = i["course7"] as! String
+                    let freeOne = i["free1"] as! String
+                    let freeTwo = i["free2"] as! String
+                    let interestOne = i["interest1"] as! String
+                    let interestTwo = i["interest2"] as! String
+                    let interestThree = i["interest3"] as! String
+                    let studySpot = i["favoriteStudySpot"] as! String
+                    let allText = ("\(firstName) \(lastName) \(courseOne) \(courseTwo) \(courseThree) \(courseFour) \(courseFive) \(courseSix) \(courseSeven) \(freeOne) \(freeTwo) \(interestOne) \(interestTwo) \(interestTwo) \(studySpot)")
+                    self?.data.append(dataType(id: id, firstName: firstName, lastName: lastName, courseOne: courseOne, courseTwo: courseTwo, courseThree: courseThree, courseFour: courseFour, courseFive: courseFive, courseSix: courseSix, courseSeven: courseSeven, freeOne: freeOne, freeTwo: freeTwo, interestOne: interestOne, interstTwo: interestTwo, interestThree: interestThree, studySpot: studySpot, allText: allText))
+                }
+            }
+        }
+    }
+    
+    struct dataType: Identifiable {
+        
+        var id: String
+        var firstName: String
+        var lastName: String
+        var courseOne: String
+        var courseTwo: String
+        var courseThree: String
+        var courseFour: String
+        var courseFive: String
+        var courseSix: String
+        var courseSeven: String
+        var freeOne: String
+        var freeTwo: String
+        var interestOne: String
+        var interstTwo: String
+        var interestThree: String
+        var studySpot: String
+        var allText: String
+    }
+    
+    func removeStackViews() {
+        let profileViews = vertStack.subviews
+        for subUIView in profileViews {
+            subUIView.removeFromSuperview()
+        }
+    }
 }
