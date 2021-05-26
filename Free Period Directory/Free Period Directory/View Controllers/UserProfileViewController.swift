@@ -70,6 +70,14 @@ class UserProfileViewController: UIViewController {
         goToEditProfileScreen()
     }
     
+    @IBAction func editFreesButtonTapped(_ sender: Any) {
+    }
+    @IBAction func editCoursesButtonTapped(_ sender: Any) {
+    }
+    @IBAction func EditStudySpotButtonTapped(_ sender: Any) {
+    }
+    @IBAction func EditInterestsButtonTapped(_ sender: Any) {
+    }
     override func viewDidLoad() {
         errorLabel.alpha = 0
         freesLabelsArray = [userFree1,userFree2,userFree3]
@@ -245,7 +253,41 @@ class UserProfileViewController: UIViewController {
         view.window?.rootViewController = userProfileIsEditingViewController
         view.window?.makeKeyAndVisible()
     }
+    
+    func goToEditNameEmailScreen(){
+        let nameEmailIsEditingViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.nameEmailIsEditingViewController) as? Name_and_Email_IsEditing_ViewController
+        view.window?.rootViewController = nameEmailIsEditingViewController
+        view.window?.makeKeyAndVisible()
+    }
+    
+    func goToEditFreesScreen(){
+        let freesIsEditingViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.freesIsEditingViewController) as? Frees_IsEditing_ViewController
+        view.window?.rootViewController = freesIsEditingViewController
+        view.window?.makeKeyAndVisible()
+    }
+    
+    func goToEditStudySpotScreen(){
+        let studySpotIsEditingViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.studySpotIsEditingViewController) as? Study_Spot_IsEditing_ViewController
+        view.window?.rootViewController = studySpotIsEditingViewController
+        view.window?.makeKeyAndVisible()
+    }
 
+    func goToEditCoursesScreen(){
+        let coursesIseEditingViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.coursesIseEditingViewController) as? Courses_IsEditing_ViewController
+        view.window?.rootViewController = coursesIseEditingViewController
+        view.window?.makeKeyAndVisible()
+    }
+    
+    func goToEditInterestsScreen(){
+        let interestsIsEditingViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.interestsIsEditingViewController) as? Interests_IsEditing_ViewController
+        view.window?.rootViewController = interestsIsEditingViewController
+        view.window?.makeKeyAndVisible()
+    }
 
     /*
     // MARK: - Navigation

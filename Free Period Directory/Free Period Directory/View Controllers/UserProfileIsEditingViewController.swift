@@ -259,27 +259,34 @@ extension UserProfileIsEditingViewController: UITextFieldDelegate{
         else if textField == favoriteStudySpotTextField{
             if string.isEmpty {
                 studySpotSearch = String(textField.text!.dropLast())
-                favoriteStudySpotTextField.alpha = 0
+                studySpotSearchData = studySpotData
+                print("empty")
             }
             else
             {
                 studySpotSearch=textField.text!+string
+                print("istext")
             }
             
             var filteredArray:[String] = []
             for i in studySpotData {
                 if i.lowercased().contains(studySpotSearch.lowercased()){
                     filteredArray.append(i)
+                    print("added")
                 }
             }
             if filteredArray.count > 0
             {
                 studySpotSearchData.removeAll(keepingCapacity: true)
                 studySpotSearchData = filteredArray
+                print("hasdata")
+                print(filteredArray)
+                print(studySpotSearchData)
             }
             else
             {
                 studySpotSearchData=studySpotData
+                print("no data")
             }
             self.studySpotSearchTableView.reloadData()
         }
@@ -358,11 +365,11 @@ extension UserProfileIsEditingViewController: UITableViewDataSource{
         case freeSearchTableView:
             return freesSearchData.count
         case studySpotSearchTableView:
-            return studySpotData.count
+            return studySpotSearchData.count
         case coursesSearchTableView:
-            return coursesData.count
+            return coursesSearchData.count
         case interestsSearchTableView:
-            return interestsData.count
+            return interestsSearchData.count
         default:
             print("Error")
             return 1
@@ -378,15 +385,15 @@ extension UserProfileIsEditingViewController: UITableViewDataSource{
             return cell
         case studySpotSearchTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: "studySpotCell")!  as! Cell
-            cell.name.text = studySpotData[indexPath.row]
+            cell.name.text = studySpotSearchData[indexPath.row]
             return cell
         case coursesSearchTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: "coursesCell")!  as! Cell
-            cell.name.text = coursesData[indexPath.row]
+            cell.name.text = coursesSearchData[indexPath.row]
             return cell
         case interestsSearchTableView:
             let cell = tableView.dequeueReusableCell(withIdentifier: "interestCell")!  as! Cell
-            cell.name.text = interestsData[indexPath.row]
+            cell.name.text = interestsSearchData[indexPath.row]
             return cell
         default:
             let cell = UITableViewCell()
