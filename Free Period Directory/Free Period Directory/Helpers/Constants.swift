@@ -21,5 +21,13 @@ struct Constants {
         static let studySpotViewController = "Study_Spot_ViewController"
         static let interestSignupViewController = "Interest_Signup_ViewController"
         static let expandedProfileViewController = "Expanded_Profile_ViewController"
+        static let userProfileViewController = "User_Profile_ViewController"
+        static let userProfileIsEditingViewController = "User_Profile_Is_Editing_ViewController"
+        static let nameEmailIsEditingViewController = "Name_and_Email_IsEditing_ViewController"
+        static let freesIsEditingViewController = "Frees_IsEditing_ViewController"
+        static let studySpotIsEditingViewController = "Study_Spot_IsEditing_ViewController"
+        static let coursesIseEditingViewController = "Course_Signup_ViewController"
+        static let interestsIsEditingViewController = "Interests_IsEditing_ViewController"
+        
     }
 }

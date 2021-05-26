@@ -20,6 +20,9 @@ class Study_Spot_ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var selectedSpot: UILabel!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        goBack()
+    }
     private var data = [String]()
     
     var filteredData: [String]!
@@ -93,6 +96,13 @@ class Study_Spot_ViewController: UIViewController, UISearchBarDelegate {
         self.goToNextScreen()
         }
         
+    }
+    
+    func goBack(){
+        let courseSignupViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.courseSignupViewController) as? Course_Signup_ViewController
+        view.window?.rootViewController = courseSignupViewController
+        view.window?.makeKeyAndVisible()
     }
     
     func goToNextScreen(){

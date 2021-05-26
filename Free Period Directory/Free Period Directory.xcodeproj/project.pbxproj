@@ -23,8 +23,15 @@
 		3FE2184425E636C7004C4E51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE2184325E636C7004C4E51 /* Constants.swift */; };
 		4A1300CA262C0C1200020D2F /* Study Spot ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1300C9262C0C1200020D2F /* Study Spot ViewController.swift */; };
 		4A94260F2635321F0083124F /* Interest Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94260E2635321F0083124F /* Interest Signup ViewController.swift */; };
+		4AB06C77265DFB6400A8053E /* Frees IsEditing ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB06C76265DFB6400A8053E /* Frees IsEditing ViewController.swift */; };
+		4AB06C7A265DFB9E00A8053E /* Name and Email IsEditing ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB06C79265DFB9E00A8053E /* Name and Email IsEditing ViewController.swift */; };
+		4AB06C7D265DFBE400A8053E /* Study Spot IsEditing ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB06C7C265DFBE400A8053E /* Study Spot IsEditing ViewController.swift */; };
+		4AB06C80265DFC0600A8053E /* Courses IsEditing ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB06C7F265DFC0600A8053E /* Courses IsEditing ViewController.swift */; };
+		4AB06C83265DFC1B00A8053E /* Interests IsEditing ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB06C82265DFC1B00A8053E /* Interests IsEditing ViewController.swift */; };
 		4AB442DB26152568005B6234 /* Course Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB442DA26152568005B6234 /* Course Signup ViewController.swift */; };
 		4AB442F5261D7E86005B6234 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB442F4261D7E86005B6234 /* Cell.swift */; };
+		4AB5CAB12653105500CAE9DC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5CAB02653105500CAE9DC /* UserProfileViewController.swift */; };
+		4AB5CAB426531A2600CAE9DC /* UserProfileIsEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5CAB326531A2600CAE9DC /* UserProfileIsEditingViewController.swift */; };
 		634FE0E7552C37CF201DD57A /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A69C4340F4D31AE11428ABB /* Pods_Free_Period_Directory.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +56,15 @@
 		3FE2184325E636C7004C4E51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A1300C9262C0C1200020D2F /* Study Spot ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Study Spot ViewController.swift"; sourceTree = "<group>"; };
 		4A94260E2635321F0083124F /* Interest Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interest Signup ViewController.swift"; sourceTree = "<group>"; };
+		4AB06C76265DFB6400A8053E /* Frees IsEditing ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Frees IsEditing ViewController.swift"; sourceTree = "<group>"; };
+		4AB06C79265DFB9E00A8053E /* Name and Email IsEditing ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Name and Email IsEditing ViewController.swift"; sourceTree = "<group>"; };
+		4AB06C7C265DFBE400A8053E /* Study Spot IsEditing ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Study Spot IsEditing ViewController.swift"; sourceTree = "<group>"; };
+		4AB06C7F265DFC0600A8053E /* Courses IsEditing ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Courses IsEditing ViewController.swift"; sourceTree = "<group>"; };
+		4AB06C82265DFC1B00A8053E /* Interests IsEditing ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interests IsEditing ViewController.swift"; sourceTree = "<group>"; };
 		4AB442DA26152568005B6234 /* Course Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course Signup ViewController.swift"; sourceTree = "<group>"; };
 		4AB442F4261D7E86005B6234 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		4AB5CAB02653105500CAE9DC /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		4AB5CAB326531A2600CAE9DC /* UserProfileIsEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileIsEditingViewController.swift; sourceTree = "<group>"; };
 		810B4D51D384A700097AAC58 /* Pods-Free Period Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.debug.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,11 +117,14 @@
 		3F31AEAB25E2D99D00B2A6C1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4AB06C75265DFB3400A8053E /* IsEditing ViewControllers */,
 				3FDBBD4B25F73C030059F4F9 /* Signup ViewControllers */,
 				3F31AE7B25E2219200B2A6C1 /* ViewController.swift */,
 				3F31AEA525E2D97E00B2A6C1 /* Login ViewController.swift */,
 				3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */,
 				3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */,
+				4AB5CAB02653105500CAE9DC /* UserProfileViewController.swift */,
+				4AB5CAB326531A2600CAE9DC /* UserProfileIsEditingViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -140,6 +157,18 @@
 				0A69C4340F4D31AE11428ABB /* Pods_Free_Period_Directory.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4AB06C75265DFB3400A8053E /* IsEditing ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4AB06C79265DFB9E00A8053E /* Name and Email IsEditing ViewController.swift */,
+				4AB06C76265DFB6400A8053E /* Frees IsEditing ViewController.swift */,
+				4AB06C7C265DFBE400A8053E /* Study Spot IsEditing ViewController.swift */,
+				4AB06C7F265DFC0600A8053E /* Courses IsEditing ViewController.swift */,
+				4AB06C82265DFC1B00A8053E /* Interests IsEditing ViewController.swift */,
+			);
+			path = "IsEditing ViewControllers";
 			sourceTree = "<group>";
 		};
 		D68B6E3DED5F03B9735CB584 /* Pods */ = {
@@ -269,13 +298,20 @@
 				4A94260F2635321F0083124F /* Interest Signup ViewController.swift in Sources */,
 				3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */,
 				3F6F15E72618338400836563 /* Profile.swift in Sources */,
+				4AB06C77265DFB6400A8053E /* Frees IsEditing ViewController.swift in Sources */,
+				4AB5CAB426531A2600CAE9DC /* UserProfileIsEditingViewController.swift in Sources */,
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
+				4AB06C80265DFC0600A8053E /* Courses IsEditing ViewController.swift in Sources */,
 				4AB442F5261D7E86005B6234 /* Cell.swift in Sources */,
+				4AB06C7A265DFB9E00A8053E /* Name and Email IsEditing ViewController.swift in Sources */,
 				3F6F4E5226181ED60024CAEA /* Profiles ViewController.swift in Sources */,
 				3FE2184425E636C7004C4E51 /* Constants.swift in Sources */,
+				4AB5CAB12653105500CAE9DC /* UserProfileViewController.swift in Sources */,
+				4AB06C7D265DFBE400A8053E /* Study Spot IsEditing ViewController.swift in Sources */,
 				3FDBBD5E25F73D0D0059F4F9 /* Free Period Signup ViewController.swift in Sources */,
+				4AB06C83265DFC1B00A8053E /* Interests IsEditing ViewController.swift in Sources */,
 				3F31AEA325E2D97200B2A6C1 /* Signup ViewController.swift in Sources */,
 				3F31AEA625E2D97E00B2A6C1 /* Login ViewController.swift in Sources */,
 				4AB442DB26152568005B6234 /* Course Signup ViewController.swift in Sources */,

@@ -20,6 +20,9 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var nextButton: UIButton!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        goBack()
+    }
     //Array for the data that will be displayed on the screeen—just course code and name
     private var data = [String]()
     
@@ -67,7 +70,9 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
                     let offering = i["currently-offering"] as! Bool
                     let department = i["department-name"] as! String
                     self?.courses.append(dataType(id: id, code: code, name: name, offering: offering, department: department))
-                    self?.data.append("\(code) \(name)")
+                    if offering == true{
+                        self?.data.append("\(code) \(name)")
+                    }
                 }
                 self?.searchTableView.reloadData()
             }
@@ -156,6 +161,16 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
             self.goToNextScreen()
         }
         
+    }
+    
+    func goBack(){
+        let freePeriodSignupViewController =
+            storyboard?.instantiateViewController(identifier:
+            Constants.Storyboard.freePeriodSignupViewController) as?
+            Free_Period_Signup_ViewController
+        
+        view.window?.rootViewController = freePeriodSignupViewController
+        view.window?.makeKeyAndVisible()
     }
     
     func goToNextScreen(){
