@@ -26,6 +26,7 @@ extension UIStackView {
 
 class UserProfile {
 
+    // set up variables
     var userUID: String = ""
     var name = UILabel()
     var free1 = UILabel()
@@ -51,6 +52,8 @@ class UserProfile {
     }
     
     let db = Firestore.firestore()
+    
+    // GETTER METHODS
     
     // understanding how to return the values of asynchronous functions
     // https://dev-wd.github.io/swift/escaping-closure/
@@ -189,8 +192,10 @@ class UserProfile {
         }
     }
     
+    // create a stackview for the profile
     func createProfile(view: UIView) -> UIStackView {
         
+        // set up vertstack
         let vertStack = UIStackView()
         vertStack.translatesAutoresizingMaskIntoConstraints = false
         vertStack.axis = .vertical
@@ -201,8 +206,10 @@ class UserProfile {
         vertStack.isLayoutMarginsRelativeArrangement = true
         vertStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
 
-
+        // customizes vertstack
         vertStack.customize()
+        
+        // GET ALL INFO
         
         self.getFirstName() { (data) in
             let firstName = data
@@ -306,25 +313,10 @@ class UserProfile {
         vertStack.addArrangedSubview(interest3)
         interest3.textAlignment = NSTextAlignment.center
         
-//        // add courses to the vertical stack
-//        var j = 1
-//        while j <= coursesArray.count {
-//            self.courses.text = (self.courses.text ?? "") + "Course \(j): \(coursesArray[j - 1])"
-//            print(coursesArray[j - 1])
-//            j = j + 1
-//        }
-//        self.courses.lineBreakMode = .byWordWrapping
-//        self.courses.numberOfLines = 0
-//        vertStack.addArrangedSubview(courses)
-//        courses.textAlignment = NSTextAlignment.center
-//
-//        self.initializeMoreButton(stack: vertStack)
-
+        // add the vertstack to the view (in this case, the scroll view)
         view.addSubview(vertStack)
         
         return vertStack
     }
-
-
 }
 

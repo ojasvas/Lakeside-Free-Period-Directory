@@ -45,8 +45,6 @@ class Login_ViewController: UIViewController {
             return "Please fill in all the fields"
         }
         
-        // !!!!!!!!!! TODO !!!!!!!!!! Call email validation method here!
-        
         // Check to see if the password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -58,8 +56,6 @@ class Login_ViewController: UIViewController {
         
         return nil
     }
-    
-    // !!!!!!!!!! TODO !!!!!!!!!! We should figure out how to validate lakeside emails
     
     // Checks to see if the password is valid
     func isPasswordValid(_ password : String) -> Bool{

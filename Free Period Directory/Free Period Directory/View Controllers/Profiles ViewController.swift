@@ -174,6 +174,7 @@ class Profiles_ViewController: UIViewController {
         }
     }
     
+    // set up dataType structure
     struct dataType: Identifiable {
         
         var id: String
