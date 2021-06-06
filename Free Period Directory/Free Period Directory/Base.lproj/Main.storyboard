@@ -114,7 +114,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abn-Zo-MaX">
-                                <rect key="frame" x="40" y="44" width="90" height="30"/>
+                                <rect key="frame" x="0.0" y="44" width="90" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="&lt; Back"/>
                                 <connections>
@@ -190,7 +190,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVn-Pb-8cA">
-                                <rect key="frame" x="40" y="46" width="90" height="30"/>
+                                <rect key="frame" x="0.0" y="44" width="90" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="&lt; Back"/>
                                 <connections>
@@ -2050,10 +2050,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1A-yw-P9R">
-                                <rect key="frame" x="0.0" y="102" width="414" height="794"/>
+                                <rect key="frame" x="0.0" y="127" width="414" height="769"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ktp-xg-nDq">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="7"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="9999999999999" id="TFs-tV-561" userLabel="height = 1000"/>
                                         </constraints>
@@ -2070,7 +2070,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Q48-Ub-mGQ"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weV-TG-ZSb">
-                                <rect key="frame" x="20" y="44" width="369" height="48"/>
+                                <rect key="frame" x="20" y="76" width="369" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Keyword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvD-OJ-IB5">
                                         <rect key="frame" x="0.0" y="0.0" width="321" height="48"/>
@@ -2090,12 +2090,21 @@
                                     <constraint firstAttribute="height" constant="48" id="uxI-DL-yvt"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plT-Zs-UTX">
+                                <rect key="frame" x="20" y="38" width="47" height="30"/>
+                                <state key="normal" title="&lt; Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="0ZK-V4-U8N" eventType="touchUpInside" id="TOv-PC-Uhv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KEZ-hk-Z2G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="i1A-yw-P9R" firstAttribute="top" secondItem="weV-TG-ZSb" secondAttribute="bottom" constant="10" id="Iti-Z4-cuN"/>
-                            <constraint firstItem="weV-TG-ZSb" firstAttribute="top" secondItem="KEZ-hk-Z2G" secondAttribute="top" id="MLd-kM-Wmp"/>
+                            <constraint firstItem="weV-TG-ZSb" firstAttribute="top" secondItem="plT-Zs-UTX" secondAttribute="bottom" constant="8" id="AaM-VE-eT4"/>
+                            <constraint firstItem="i1A-yw-P9R" firstAttribute="top" secondItem="weV-TG-ZSb" secondAttribute="bottom" constant="3" id="Iti-Z4-cuN"/>
+                            <constraint firstItem="plT-Zs-UTX" firstAttribute="leading" secondItem="weV-TG-ZSb" secondAttribute="leading" id="Jad-Ex-2In"/>
+                            <constraint firstItem="weV-TG-ZSb" firstAttribute="top" secondItem="KEZ-hk-Z2G" secondAttribute="top" constant="32" id="MLd-kM-Wmp"/>
                             <constraint firstItem="weV-TG-ZSb" firstAttribute="leading" secondItem="KEZ-hk-Z2G" secondAttribute="leading" constant="20" id="PGB-l0-QrJ"/>
                             <constraint firstItem="i1A-yw-P9R" firstAttribute="leading" secondItem="0U0-57-GT2" secondAttribute="leading" id="Voc-1R-oTV"/>
                             <constraint firstItem="KEZ-hk-Z2G" firstAttribute="trailing" secondItem="weV-TG-ZSb" secondAttribute="trailing" constant="25" id="ZYl-fI-BRo"/>

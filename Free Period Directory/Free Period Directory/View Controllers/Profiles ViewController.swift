@@ -64,7 +64,12 @@ class Profiles_ViewController: UIViewController {
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((allUsers.count) * 440))
         }
     }
-
+    
+    @IBAction func backPressed(_ sender: Any) {
+        goBack()
+    }
+    
+    
     @IBAction func searchPressed(_ sender: Any) {
         // remove everything from the vertical stack
         self.removeStackViews()
@@ -202,5 +207,15 @@ class Profiles_ViewController: UIViewController {
         for subUIView in profileViews {
             subUIView.removeFromSuperview()
         }
+    }
+    
+    func goBack(){
+        let homeViewController =
+            storyboard?.instantiateViewController(identifier:
+            Constants.Storyboard.homeViewController) as?
+            Home_ViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
 }

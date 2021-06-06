@@ -54,6 +54,7 @@ class UserProfile {
     let db = Firestore.firestore()
     
     // GETTER METHODS
+    // 
     
     // understanding how to return the values of asynchronous functions
     // https://dev-wd.github.io/swift/escaping-closure/

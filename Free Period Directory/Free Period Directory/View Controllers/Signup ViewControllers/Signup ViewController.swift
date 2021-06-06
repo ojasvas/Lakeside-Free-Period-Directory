@@ -235,7 +235,7 @@ class Signup_ViewController: UIViewController {
         
     }
     
-    func goBack(){
+    func goBack() {
         let initialViewController =
             storyboard?.instantiateViewController(identifier: Constants.Storyboard.initialViewController) as? ViewController
         
