@@ -20,7 +20,6 @@ class Home_ViewController: UIViewController {
         signOutCurrentUser()
     }
     
-    
     @IBAction func profilesButtonTapped(_ sender: Any) {
         goToProfilesScreen()
     }
@@ -28,6 +27,7 @@ class Home_ViewController: UIViewController {
     @IBAction func yourProfileButtonTapped(_ sender: Any) {
         goToUserProfileScreen()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
@@ -37,6 +37,7 @@ class Home_ViewController: UIViewController {
         let userUID = user.uid
         let testUser = UserProfile(uid: userUID)
         
+        // get name and frees
         testUser.getFirstName() { (data) in
             let firstName = data
             self.welcome.text = "Welcome \(firstName.capitalized) "
@@ -60,11 +61,9 @@ class Home_ViewController: UIViewController {
         
         self.view.addSubview(welcome)
         errorLabel.alpha = 0
-
-        // Do any additional setup after loading the view.
     }
     
-    //Signs out the current user
+    // Signs out the current user
     func signOutCurrentUser(){
         do {
             try Auth.auth().signOut()
@@ -80,7 +79,7 @@ class Home_ViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
-    //Alerts the user to confirm that they would like to log out
+    // Alerts the user to confirm that they would like to log out
     func showLogoutAlert(){
         let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of this account?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("tapped cancel")}))

@@ -56,18 +56,7 @@ class Free_Period_Signup_ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    func checkIfUserHasFrees(){
+    func checkIfUserHasFrees() {
         guard let user = Auth.auth().currentUser else { return }
         let userUID = user.uid
         let db = Firestore.firestore()
@@ -127,6 +116,7 @@ class Free_Period_Signup_ViewController: UIViewController {
         return false
     }
 
+    // append which frees are selected to an array
     func whatFrees() -> [String] {
         var frees: [String] = []
         if firstFreeSwitch.isOn {
@@ -165,13 +155,14 @@ class Free_Period_Signup_ViewController: UIViewController {
         var isValid = validateSwitches()
         let frees = whatFrees()
         let numFrees = frees.count
-        if numFrees > 3{
+        // if 1 or 2 frees were not selected
+        if numFrees > 2 || numFrees == 0 {
             isValid = false
         }
         if isValid == false {
-            // Send alert if the user does select any frees
+            // Send alert if the user does select any frees or selects too many
             // Source: developer.apple.com
-            let errorAlert = UIAlertController(title: "Error!", message: "Please select two options", preferredStyle: .alert)
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select one or two options", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The error alert occured.")
             }))
@@ -188,7 +179,7 @@ class Free_Period_Signup_ViewController: UIViewController {
            let ref = db.collection("users").document(userUID)
 
            while i < numFrees {
-
+               // write data into the database
                let freeNumber = i + 1
                let freeName = "free\(String(freeNumber))"
                ref.updateData([

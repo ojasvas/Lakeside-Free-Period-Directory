@@ -20,27 +20,38 @@ class Profiles_ViewController: UIViewController {
     
     @IBOutlet weak var searchButton: UIButton!
     
+    // create an array of User Profile objects
     var userProfiles: [UserProfile] = []
+    // create an array of stackViews (the profiles themselves)
     var profileStacks: [UIStackView] = []
+    // this array is used to get all of the data from the database
     var data: [dataType] = []
+    // this array will contain the data (users) that match the keyword search
     var filteredData: [dataType] = []
-    var filteredProfiles: [String] = []
+    // this array will contain the user ids of the users that match the keyword search
+    var filteredUsers: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // get all data from database
         self.getData()
         
+        // add scroll functionality
         view.addSubview(scrollView)
+        // create a vertical stack in the scrollView to help arrange the profiles
         self.scrollView.addSubview(vertStack)
         
+        // set up vertical stack
         self.vertStack.translatesAutoresizingMaskIntoConstraints = false
         self.vertStack.spacing = 10
         self.vertStack.alignment = .fill
         self.vertStack.distribution = .fillEqually
         
+        // get all uids
         self.getDocNames() { (data) in
             let allUsers = data
             var i = 0
+            // loop that creates all the profiles and adds them to the vertical stack
             while i < allUsers.count {
                 let userProfile = UserProfile(uid: allUsers[i])
                 self.userProfiles.append(userProfile)
@@ -49,32 +60,47 @@ class Profiles_ViewController: UIViewController {
                 self.vertStack.addArrangedSubview(profile)
                 i = i + 1
             }
+            // set size of the scrollView
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((allUsers.count) * 440))
         }
     }
-
+    
+    @IBAction func backPressed(_ sender: Any) {
+        goBack()
+    }
+    
+    
     @IBAction func searchPressed(_ sender: Any) {
+        // remove everything from the vertical stack
         self.removeStackViews()
+        
+        // make the searched text uniform
         var searchedText = searchTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         searchedText = searchedText.lowercased()
+        
+        // make sure these two arrays are empty each time the search button is pressed
         filteredData.removeAll()
-        filteredProfiles.removeAll()
+        filteredUsers.removeAll()
 
+        // if anything in data includes the searched text, add to the filteredData array
         for i in data {
             if i.allText.lowercased().contains(searchedText){
                 filteredData.append(i)
             }
         }
+        
+        // create profiles for the filteredData users and add to the vertical stack
         for i in filteredData {
             let userProfile = UserProfile(uid: i.id)
             let profile = userProfile.createProfile(view: self.vertStack)
             self.vertStack.addArrangedSubview(profile)
-            filteredProfiles.append(i.id)
+            filteredUsers.append(i.id)
         }
-        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((filteredProfiles.count) * 440))
-        
+        // resize the scrollView
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: CGFloat((filteredUsers.count) * 440))
+
+        // Send alert if no profiles match the keyword the user entered
         if filteredData.count == 0 {
-            // Send alert if no profiles match the keyword the user entered
             // Source: developer.apple.com
             let errorAlert = UIAlertController(title: "Error!", message: "No profiles match your keyword", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
@@ -84,7 +110,7 @@ class Profiles_ViewController: UIViewController {
         }
     }
     
-    
+    // function that gets all the uids from the database except the current user's
     func getDocNames(completion: @escaping (Array<String>) -> Void) {
         var docIDArray: [String] = []
         let db = Firestore.firestore()
@@ -104,7 +130,7 @@ class Profiles_ViewController: UIViewController {
         }
     }
     
-    //Gets the userID of the current user
+    // Gets the userID of the current user
     func getCurrentUserID() -> Any? {
         let user = Auth.auth().currentUser
         let uid = user?.uid
@@ -117,7 +143,7 @@ class Profiles_ViewController: UIViewController {
         }
     }
     
-    //Gets the data from the entire courses database and appends it to the courses and data arrays
+    // Gets the data from the database and organizes it
     func getData() {
         let db = Firestore.firestore()
         db.collection("users").getDocuments{[weak self] snap, err in
@@ -145,6 +171,7 @@ class Profiles_ViewController: UIViewController {
                     let interestTwo = i["interest2"] as! String
                     let interestThree = i["interest3"] as! String
                     let studySpot = i["favoriteStudySpot"] as! String
+                    // allText will be used to determine if the keyword can be found in a user's profile
                     let allText = ("\(firstName) \(lastName) \(courseOne) \(courseTwo) \(courseThree) \(courseFour) \(courseFive) \(courseSix) \(courseSeven) \(freeOne) \(freeTwo) \(interestOne) \(interestTwo) \(interestTwo) \(studySpot)")
                     self?.data.append(dataType(id: id, firstName: firstName, lastName: lastName, courseOne: courseOne, courseTwo: courseTwo, courseThree: courseThree, courseFour: courseFour, courseFive: courseFive, courseSix: courseSix, courseSeven: courseSeven, freeOne: freeOne, freeTwo: freeTwo, interestOne: interestOne, interstTwo: interestTwo, interestThree: interestThree, studySpot: studySpot, allText: allText))
                 }
@@ -152,6 +179,7 @@ class Profiles_ViewController: UIViewController {
         }
     }
     
+    // set up dataType structure
     struct dataType: Identifiable {
         
         var id: String
@@ -173,10 +201,21 @@ class Profiles_ViewController: UIViewController {
         var allText: String
     }
     
+    // removes all views from a stack
     func removeStackViews() {
         let profileViews = vertStack.subviews
         for subUIView in profileViews {
             subUIView.removeFromSuperview()
         }
+    }
+    
+    func goBack(){
+        let homeViewController =
+            storyboard?.instantiateViewController(identifier:
+            Constants.Storyboard.homeViewController) as?
+            Home_ViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
 }
