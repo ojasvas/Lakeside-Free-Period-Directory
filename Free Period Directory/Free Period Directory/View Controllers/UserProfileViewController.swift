@@ -67,16 +67,20 @@ class UserProfileViewController: UIViewController {
     }
     
     @IBAction func editProfileButtonTapped(_ sender: Any) {
-        goToEditProfileScreen()
+        goToEditNameEmailScreen()
     }
     
     @IBAction func editFreesButtonTapped(_ sender: Any) {
+        goToEditFreesScreen()
     }
     @IBAction func editCoursesButtonTapped(_ sender: Any) {
+        goToEditCoursesScreen()
     }
     @IBAction func EditStudySpotButtonTapped(_ sender: Any) {
+        goToEditStudySpotScreen()
     }
     @IBAction func EditInterestsButtonTapped(_ sender: Any) {
+        goToEditInterestsScreen()
     }
     override func viewDidLoad() {
         errorLabel.alpha = 0
@@ -247,13 +251,6 @@ class UserProfileViewController: UIViewController {
         view.window?.makeKeyAndVisible()
     }
     
-    func goToEditProfileScreen(){
-        let userProfileIsEditingViewController =
-            storyboard?.instantiateViewController(identifier: Constants.Storyboard.userProfileIsEditingViewController) as? UserProfileIsEditingViewController
-        view.window?.rootViewController = userProfileIsEditingViewController
-        view.window?.makeKeyAndVisible()
-    }
-    
     func goToEditNameEmailScreen(){
         let nameEmailIsEditingViewController =
             storyboard?.instantiateViewController(identifier: Constants.Storyboard.nameEmailIsEditingViewController) as? Name_and_Email_IsEditing_ViewController
@@ -276,9 +273,9 @@ class UserProfileViewController: UIViewController {
     }
 
     func goToEditCoursesScreen(){
-        let coursesIseEditingViewController =
-            storyboard?.instantiateViewController(identifier: Constants.Storyboard.coursesIseEditingViewController) as? Courses_IsEditing_ViewController
-        view.window?.rootViewController = coursesIseEditingViewController
+        let coursesIsEditingViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.coursesIsEditingViewController) as? Courses_IsEditing_ViewController
+        view.window?.rootViewController = coursesIsEditingViewController
         view.window?.makeKeyAndVisible()
     }
     

@@ -24,15 +24,34 @@ class Study_Spot_IsEditing_ViewController: UIViewController{
     private var studySpotSearchData = [String]()
     
     
-    @IBAction func homeButtonTapped(_ sender: Any) {
-        goToHomeScreen()
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        goToUserProfileScreen()
     }
     
     @IBAction func doneEditingTapped(_ sender: Any) {
-        
+        if favoriteStudySpotTextField.text == "" {
+            // Send alert if the user does not select a favorite study spot
+            // Source: developer.apple.com
+            let errorAlert = UIAlertController(title: "Error!", message: "Please select your favorite or indicate no preference", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The error alert occured.")
+            }))
+            self.present(errorAlert, animated: true, completion: nil)
+        } else {
+            
+           // call the user uid to set the value of his/her/their favorite study spot
+           // Source: https://stackoverflow.com/questions/43630170/value-of-type-viewcontroller-has-no-member-ref-with-firebase
+           guard let user = Auth.auth().currentUser else { return }
+           let userUID = user.uid
+           let db = Firestore.firestore()
+           let ref = db.collection("users").document(userUID)
+           ref.updateData(["favoriteStudySpot": self.favoriteStudySpotTextField.text!])
+        self.goToUserProfileScreen()
+        }
     }
     
     override func viewDidLoad() {
+        getUserData()
         getTableData()
         studySpotSearchData = studySpotData
         studySpotSearchTableView.alpha = 0
@@ -41,6 +60,23 @@ class Study_Spot_IsEditing_ViewController: UIViewController{
         favoriteStudySpotTextField.delegate = self
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    func getUserData(){
+        guard let user = Auth.auth().currentUser else {return}
+        let userUID = user.uid
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(userUID)
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if document.get("favoriteStudySpot") != nil{
+                    self.favoriteStudySpotTextField.text = (document.get("favoriteStudySpot") as! String)
+                }
+                else{
+                    self.favoriteStudySpotTextField.text = "N/A"
+                }
+            }
+        }
     }
     
     func getTableData(){
@@ -63,10 +99,10 @@ class Study_Spot_IsEditing_ViewController: UIViewController{
         
     }
     
-    func goToHomeScreen(){
-        let homeViewController =
-            storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? Home_ViewController
-        view.window?.rootViewController = homeViewController
+    func goToUserProfileScreen() {
+        let userProfileViewController =
+            storyboard?.instantiateViewController(identifier: Constants.Storyboard.userProfileViewController) as? UserProfileViewController
+        view.window?.rootViewController = userProfileViewController
         view.window?.makeKeyAndVisible()
     }
 

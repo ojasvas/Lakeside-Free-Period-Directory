@@ -31,7 +31,6 @@
 		4AB442DB26152568005B6234 /* Course Signup ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB442DA26152568005B6234 /* Course Signup ViewController.swift */; };
 		4AB442F5261D7E86005B6234 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB442F4261D7E86005B6234 /* Cell.swift */; };
 		4AB5CAB12653105500CAE9DC /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5CAB02653105500CAE9DC /* UserProfileViewController.swift */; };
-		4AB5CAB426531A2600CAE9DC /* UserProfileIsEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5CAB326531A2600CAE9DC /* UserProfileIsEditingViewController.swift */; };
 		634FE0E7552C37CF201DD57A /* Pods_Free_Period_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A69C4340F4D31AE11428ABB /* Pods_Free_Period_Directory.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +63,6 @@
 		4AB442DA26152568005B6234 /* Course Signup ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course Signup ViewController.swift"; sourceTree = "<group>"; };
 		4AB442F4261D7E86005B6234 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		4AB5CAB02653105500CAE9DC /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		4AB5CAB326531A2600CAE9DC /* UserProfileIsEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileIsEditingViewController.swift; sourceTree = "<group>"; };
 		810B4D51D384A700097AAC58 /* Pods-Free Period Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Free Period Directory.debug.xcconfig"; path = "Target Support Files/Pods-Free Period Directory/Pods-Free Period Directory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +122,6 @@
 				3F31AEA825E2D98B00B2A6C1 /* Home ViewController.swift */,
 				3F6F4E5126181ED60024CAEA /* Profiles ViewController.swift */,
 				4AB5CAB02653105500CAE9DC /* UserProfileViewController.swift */,
-				4AB5CAB326531A2600CAE9DC /* UserProfileIsEditingViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -299,7 +296,6 @@
 				3F31AEA925E2D98B00B2A6C1 /* Home ViewController.swift in Sources */,
 				3F6F15E72618338400836563 /* Profile.swift in Sources */,
 				4AB06C77265DFB6400A8053E /* Frees IsEditing ViewController.swift in Sources */,
-				4AB5CAB426531A2600CAE9DC /* UserProfileIsEditingViewController.swift in Sources */,
 				3F31AE7C25E2219200B2A6C1 /* ViewController.swift in Sources */,
 				3F31AE7825E2219200B2A6C1 /* AppDelegate.swift in Sources */,
 				3F31AE7A25E2219200B2A6C1 /* SceneDelegate.swift in Sources */,
