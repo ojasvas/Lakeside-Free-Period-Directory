@@ -70,6 +70,7 @@ class Frees_IsEditing_ViewController: UIViewController,UIPickerViewDelegate, UIP
         }
     }
     
+    // Makes changes to the user's information in the database
     @IBAction func doneEditingButtonTapped(_ sender: Any) {
         freesSelected = [free1TextField.text!, free2TextField.text!, free3TextField.text!]
         var freeCount =  0

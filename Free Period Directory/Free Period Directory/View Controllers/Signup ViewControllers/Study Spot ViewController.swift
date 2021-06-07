@@ -124,6 +124,7 @@ class Study_Spot_ViewController: UIViewController, UISearchBarDelegate {
 
 }
 
+//Changes the selected spot to the name of the cell that was clicked on in the search tableview
 extension Study_Spot_ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

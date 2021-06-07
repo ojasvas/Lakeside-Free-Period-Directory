@@ -119,6 +119,7 @@ class Study_Spot_IsEditing_ViewController: UIViewController{
 }
 // https://stackoverflow.com/questions/26446376/how-to-make-uitextfield-behave-like-a-uisearchbar-in-swift
 extension Study_Spot_IsEditing_ViewController: UITextFieldDelegate{
+    //Allows text field to act as a search bar for the tableview
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.isEmpty {
             studySpotSearch = String(textField.text!.dropLast())
@@ -177,6 +178,7 @@ extension Study_Spot_IsEditing_ViewController: UITableViewDataSource{
     
 }
 
+// Changes the favorite study spot to the name of the cell in the table view that the user clicked on
 extension Study_Spot_IsEditing_ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

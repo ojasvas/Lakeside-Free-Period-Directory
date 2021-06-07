@@ -118,10 +118,12 @@ class Interests_IsEditing_ViewController: UIViewController{
         }
     }
     
+    // Saves changes to the database
     @IBAction func doneEditingTapped(_ sender: Any) {
         interestsSelected = [interest1TextField.text!, interest2TextField.text!, interest3TextField.text!]
         var interestCount =  0
         var i = 0
+        //checks if the text in the text field is blank
         while i < 3{
             if interestsSelected[i] != nil && interestsSelected[i] != "" && interestsSelected[i] != "N/A"{
                 interestCount += 1
@@ -133,6 +135,7 @@ class Interests_IsEditing_ViewController: UIViewController{
         }
         var isInterest = 0
         
+        //checks if the text  in the text field is in the interests database
         for i in interestsSelected {
             if i == "" || i == "N/A"{
                 isInterest = isInterest + 1
@@ -145,7 +148,6 @@ class Interests_IsEditing_ViewController: UIViewController{
                 }
             }
         }
-        
         if interestCount < 1 {
             // Send alert if the user does not select at least 1 interest
             // Source: developer.apple.com
@@ -375,56 +377,29 @@ extension Interests_IsEditing_ViewController: UITableViewDataSource{
     
 }
 
+// Fills the text field with the name of the cell the user clicked on if it has not already been selected as another interest
 extension Interests_IsEditing_ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == interestsSearchTableView1{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            interestsSelected = [interest1TextField.text!, interest2TextField.text!, interest3TextField.text!]
-            
-            var interestRepeat = false
-            
-            for i in interestsSelected {
-                if i == cell.name.text{
-                    interestRepeat = true
-                }
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
+        interestsSelected = [interest1TextField.text!, interest2TextField.text!, interest3TextField.text!]
+        
+        var interestRepeat = false
+        
+        for i in interestsSelected {
+            if i == cell.name.text{
+                interestRepeat = true
             }
-            
-            if interestRepeat == false{
+        }
+        
+        if interestRepeat == false{
+            if tableView == interestsSearchTableView1{
                 interest1TextField.text = cell.name.text
             }
-        }
-        else if tableView == interestsSearchTableView2{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            interestsSelected = [interest1TextField.text!, interest2TextField.text!, interest3TextField.text!]
-            
-            var interestRepeat = false
-            
-            for i in interestsSelected {
-                if i == cell.name.text{
-                    interestRepeat = true
-                }
-            }
-            
-            if interestRepeat == false{
+            else if tableView == interestsSearchTableView2{
                 interest2TextField.text = cell.name.text
             }
-        }
-        else if tableView == interestsSearchTableView3{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            interestsSelected = [interest1TextField.text!, interest2TextField.text!, interest3TextField.text!]
-            
-            var interestRepeat = false
-            
-            for i in interestsSelected {
-                if i == cell.name.text{
-                    interestRepeat = true
-                }
-            }
-            
-            if interestRepeat == false{
+            else if tableView == interestsSearchTableView3{
                 interest3TextField.text = cell.name.text
             }
         }
