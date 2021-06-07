@@ -592,6 +592,7 @@ extension Courses_IsEditing_ViewController: UITableViewDataSource{
     
 }
 
+// Fills the text field with the name of the cell the user clicked on if it has not already been selected as another course
 extension Courses_IsEditing_ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -636,125 +637,6 @@ extension Courses_IsEditing_ViewController: UITableViewDelegate{
             }))
             self.present(errorAlert, animated: true, completion: nil)
         }
-        /*if tableView == course1TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course1TextField.text = cell.name.text
-            }
-        }
-        else if tableView == course2TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course2TextField.text = cell.name.text
-            }
-        }
-        else if tableView == course3TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course3TextField.text = cell.name.text
-            }
-        }
-        else if tableView == course4TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course4TextField.text = cell.name.text
-            }
-        }
-        else if tableView == course5TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course5TextField.text = cell.name.text
-            }
-        }
-        else if tableView == course6TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course6TextField.text = cell.name.text
-            }
-        }
-        else if tableView == course7TableView{
-            tableView.deselectRow(at: indexPath, animated: true)
-            guard let cell = tableView.cellForRow(at: indexPath) as? Cell else {return}
-            coursesSelected = [course1TextField.text!, course2TextField.text!, course3TextField.text!]
-            
-            var courseRepeat = false
-            
-            for i in coursesSelected {
-                if i == cell.name.text{
-                    courseRepeat = true
-                }
-            }
-            
-            if courseRepeat == false{
-                course7TextField.text = cell.name.text
-            }
-        }*/
     }
 }
 

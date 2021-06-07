@@ -183,6 +183,7 @@ class Course_Signup_ViewController: UIViewController, UISearchBarDelegate {
 }
 
 extension Course_Signup_ViewController: UITableViewDelegate{
+    // Adds the name of the cell that was clicked on to the coursesSelected array if it is not already in the array
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // https://stackoverflow.com/questions/37447124/how-do-i-create-two-table-views-in-one-view-controller-with-two-custom-uitablevi
@@ -204,6 +205,7 @@ extension Course_Signup_ViewController: UITableViewDelegate{
         }
     }
     
+    //Allows user to remove courses from the coursesSelected array
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if tableView == selectedTableView{
             if editingStyle == .delete{

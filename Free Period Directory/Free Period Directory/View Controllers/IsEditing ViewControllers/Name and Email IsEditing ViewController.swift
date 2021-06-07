@@ -150,6 +150,7 @@ class Name_and_Email_IsEditing_ViewController: UIViewController {
         return true
     }
     
+    // Updates the user's information in the database
     @IBAction func doneEditingButtonTapped(_ sender: Any) {
         // Validate fields
         let error = validateFields()
